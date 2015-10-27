@@ -1,0 +1,123 @@
+#login{
+  margin-top: 200px;
+  border: 2px solid #BBB;
+  border-radius: 10px;
+}
+.container-main{
+  padding-top: 80px;
+}
+#tab-content{
+  border: 1px solid #DDD;
+  border-top: none;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 40px 20px 20px;
+}
+.fixed_div{
+  position: fixed;
+  top: 0;
+  padding-top: 44px;
+  width: 100%;
+  background-color: #FFF;
+}
+.tr_tit td{
+  min-width: 42px;
+  text-align: center;
+  color: #761c19;
+  font-weight: bold;
+}
+.tr_tit sup{
+  font-weight: normal;
+}
+.sch_tit td:first-child{
+  min-width: 81px;
+}
+.sch_tit td:last-child{
+  min-width: 21px;
+}
+.schedule{
+  margin-top: 130px;
+}
+.schedule tr{
+  border: 1px solid #DDD;
+  cursor: pointer
+}
+.schedule tr:hover{
+  border-color: #66AFE9;
+  outline: 0px none;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(102, 175, 233, 0.6);
+}
+.schedule .selected{
+  border-color: #E9AF66;
+  outline: 0px none;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(233, 175, 102, 0.6);
+}
+.schedule tr:hover td{
+  font-weight: bold;
+}
+.schedule td{
+  min-width: 21px;
+}
+.schedule td:hover{
+  background-color: #FFEFB6;
+}
+.schedule td:first-child{
+  min-width: 60px;
+  text-align: right;
+  background-color: #DDD;
+  padding: 0 5px;
+}
+.schedule .holiday td:first-child{
+  background-color: #F0F0F0;
+  color: #888;
+}
+.schedule td:nth-child(odd){
+  border-right: 1px dotted #DDD;
+}
+.schedule td:nth-child(9), .schedule td:nth-child(17), .schedule td:nth-child(25),
+.schedule td:nth-child(33), .schedule td:nth-child(41){
+  border-right: 1px dotted #888;
+}
+.schedule td input{
+  margin: 0 -1010px -1px 0;
+  border: none;
+  background-color: #79C142;
+  color: #FFF;
+  text-align: center;
+  font-weight: bold;
+  height: 21px;
+  cursor: default;
+  border-bottom: 1px dotted #FFF;
+}
+.on{
+  background-color: #79C142;
+}
+#div-sel{
+  background-color: #EEE;
+  position: absolute;
+  display: none;
+  z-index: 10;
+  border: 1px solid #E9AF66;
+  outline: 0px none;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(233, 175, 102, 0.6);
+}
+.half{
+  padding-left: 10px;
+  color: #888;
+}
+.title{
+  height: 20px;
+  width: 100%;
+  background-color: #FFC882;
+}
+.title img{
+  float: right;
+  cursor: pointer;
+}
+#m1 img, #m2 img{
+  cursor: pointer;
+  padding: 0 8px;
+}
+.help-block{
+  display: none;
+}
