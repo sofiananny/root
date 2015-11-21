@@ -5,12 +5,12 @@
  * @author User
  */
 class Login extends CI_Controller {
-  function index(){
+  public function index(){
     $_SESSION['menu']=100;
     if (isset($_SESSION['worker_id']) && $_SESSION['role']==="admin"){ redirect('student'); }
     else {$this->load->view('worker_login_view'); }
   }
-  function login_worker(){
+ public function login_worker(){
     $response['success']=false;
     $errors=array();
     $this->load->model('worker_model');
@@ -19,7 +19,7 @@ class Login extends CI_Controller {
     header('Content-Type: application/json');
     echo json_encode($response);
   }
-  function logout_worker(){
+  public function logout_worker(){
     unset($_SESSION['worker_id']);
     $response['success']=true;
     header('Content-Type: application/json');
