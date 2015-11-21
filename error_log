@@ -1,0 +1,29 @@
+[16-Nov-2015 22:24:29 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:24:30 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:24:30 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:24:31 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:24:31 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:24:56 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:25:04 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:25:07 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:25:07 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:25:07 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:25:07 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:26:13 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:26:21 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:26:28 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:26:28 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:26:29 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:26:34 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:32:08 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:32:09 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:32:09 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:32:09 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:32:09 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:32:09 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:32:10 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:32:10 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[16-Nov-2015 22:32:10 Europe/Sofia] PHP Fatal error:  Call to a member function login_admin() on null in /home/cocofarm/public_html/sofiananny-dev/application/controllers/admin/Login.php on line 17
+[18-Nov-2015 22:18:57 Europe/Sofia] PHP Fatal error:  Call to undefined function validation_errors() in /home/cocofarm/public_html/sofiananny-dev/application/views/login_view.php on line 8
+[18-Nov-2015 22:19:00 Europe/Sofia] PHP Fatal error:  Call to undefined function validation_errors() in /home/cocofarm/public_html/sofiananny-dev/application/views/login_view.php on line 8
+[18-Nov-2015 22:19:43 Europe/Sofia] PHP Fatal error:  Call to undefined function validation_errors() in /home/cocofarm/public_html/sofiananny-dev/application/views/login_view.php on line 8

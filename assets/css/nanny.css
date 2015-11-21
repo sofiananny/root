@@ -14,22 +14,44 @@
   .white-container {
     width: 100%;
   }
+  .logo{
+    width: 140px;
+    margin-top: -20px;
+  }
   #welcome-div h1{
-    font-size: 55px;
+    height: 60px;
   }
   #welcome-div h3{
-    font-size: 30px;
+    font-size: 24px;
   }
-  .to_account{
-   clear: both; 
+  .btn-r{
+    padding: 16px 40px;
+    font-size: 28px;
+  }
+  .fw{
+    margin-top: 40px;
+  }
+}
+@media (min-width: 400px) {
+  .logo{
+    width: 160px;
+    margin-top: -7px;
+  }
+  .fw{
+    margin-top: 22px;
   }
 }
 @media (min-width: 480px) {
+  
   #welcome-div h1{
-    font-size: 80px;
+    height: 40px;
   }
   #welcome-div h3{
-    font-size: 40px;
+    font-size: 24px;
+  }
+  .btn-r{
+    padding: 2px 30px;
+    font-size: 22px;
   }
 }
 @media (min-width: 768px) {
@@ -37,14 +59,19 @@
     width: 750px;
   }
   #welcome-div h1{
-    font-size: 30px;
+    height: 90px;
   }
   #welcome-div h3{
     font-size: 40px;
   }
-  .to_account{
-   clear: none; 
+  .logo{
+    width: 240px; 
   }
+  .btn-r{
+    padding: 12px 40px;
+    font-size: 28px;
+  }
+  
 }
 @media (min-width: 992px) {
   .white-container {
@@ -55,42 +82,45 @@
   .white-container {
     width: 1170px;
   }
+  
 }
-/**
-@media (orientation:landscape) {
+/*  @media (orientation:landscape) {
   #welcome-div{
-    background: url("../img/babysitters.jpg") no-repeat scroll center 0 / cover;
+    background: #2F7751 url("../img/babysitterl.jpg") no-repeat center 0 / cover;
+    background: url("../img/babysitter.jpg") no-repeat center 40px / auto 95%, -moz-linear-gradient(left,#235E40,#4AA270,#235E40);
+    background-attachment: fixed; 
   }
 }
 @media (orientation:portrait) {
-  #welcome-div{
-    background: url("../img/babysitterl.jpg") no-repeat scroll center 0 / cover;
-  }
-}
-**/
-@-webkit-keyframes mymove1 {
+ #welcome-div{
+    background: #2F7751 url("../img/babysitterp.jpg") no-repeat scroll center 40px / auto 95%;
+    background: #2F7751 url("../img/babysitterl.jpg") no-repeat center 0 / cover;
+    background-attachment: fixed;
+  } 
+} */
+@-webkit-keyframes mymove1a {
     from {top: -450px}
     to {top: 90px}
 }
-@keyframes mymove1 {
+@keyframes mymove1a {
     from {top: -450px}
     to {top: 90px;}
 }
-@-webkit-keyframes mymove2 {
+@-webkit-keyframes mymove2a {
     from {top: 0px}
     to {top: 70px}
 }
-@keyframes mymove2 {
+@keyframes mymove2a {
     from {top: 0px}
     to {top: 70px}
 }
-body {
+body,html {
   font-family: 'Comfortaa', cursive;
+  height: 100%;
 }
 #welcome-div h1{
   background: rgba(255, 255, 255, 0.6) url("../img/logo_header.png") no-repeat scroll center center / auto 80%;
   width: 90%;
-  height: 90px;
   max-width: 850px;
   border-radius: 100px;
 }
@@ -107,8 +137,7 @@ body {
   background: url("../img/logo_header.png") no-repeat scroll center center / 90% auto;
   text-decoration: none;
   display: block;
-  width: 240px; 
-  margin-top: -7px; 
+   
   height: 80px;
 }
 
@@ -124,8 +153,25 @@ body {
 .btn-order:hover{
   background-color: #E3A317;
 }
-
-
+#save_change {
+  padding-right: 190px;
+  float: right;
+}
+#save_change2 {
+  padding-right: 190px;
+  float: right;
+}
+#usr_names{
+  overflow: hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  display:inline-block;
+  width:100px;
+  margin-bottom: -4px;
+}
+#profile{
+  top: 60px;
+}
 .modal-title-logo{
   background: url("../img/logo_header.png") no-repeat scroll left center / auto 100%;
 }
@@ -176,20 +222,25 @@ body {
   top: 0;
 }
 .fw{
-  width: 90px;
   margin-bottom: 5px;
   margin-left: 10px;
-  float: right;
+  width: 100px;
   border-radius: 20px;
   color: #FFF;
-  font-family: 'Comfortaa', cursive;
 }
 .fw, .fw:hover, .fv:active, .fw:focus{
   color: #FFF;
 }
 #how-work *, #why *, #invite, #nanny-waiting h3{
-  font-family: 'Comfortaa', cursive;
   color: #4D4D4D;
+}
+#nanny-waiting h3 {
+  padding-bottom: 10px;
+}
+#how-work h2 {
+  font-weight: bold;
+  font-kerning: normal;
+  font-tracking: 75;
 }
 .to_account{
   float: right;
@@ -214,19 +265,20 @@ body {
 .modal-header{
   background-color: #D8E1E8;
 }
-.nanny-intro-wrap {
-  padding-top: 75px;
-  background: #61739F url("../img/under-construction.png") no-repeat scroll center 100px / 75% auto;
-}
-
 #welcome-div{
-  background: #2F7751 url("../img/babysitter.jpg") no-repeat center 40px / auto 95%;
-  background: url("../img/babysitter.jpg") no-repeat center 40px / auto 95%, -moz-linear-gradient(left,#235E40,#4AA270,#235E40);
+  background: #2F7751 url("../img/babysittera.jpg") no-repeat center 30px / cover;
   background-attachment: fixed;
+  height: 100%;
+  padding-top: 18%;
+  overflow: hidden;
 }
 #welcome-div h1, #welcome-div h3{
   color: #FFF;
-  text-shadow: 5px 8px 12px rgba(0, 0, 0, 0.8);
+  /*text-shadow: 5px 8px 12px rgba(0, 0, 0, 0.8);*/
+  font-weight: bold;
+  font-kerning: auto;
+  font-tracking: 75;
+  letter-spacing: -0.75px;
   position: relative;
   -webkit-animation: mymove1 3s;  /* Chrome, Safari, Opera */
   -webkit-animation: mymove2 3s;  /* Chrome, Safari, Opera */
@@ -238,17 +290,14 @@ body {
 }
 #welcome-div h3{
   color: #FFF;
-  font-family: 'Comfortaa', cursive;
   animation: mymove2 0.4s;
   animation-delay: 0.6s;
   animation-iteration-count: 2;
 }
 #nanny-waiting{
-  background: url("../img/map1.png") no-repeat scroll center 0 / cover;
+  background: url("../img/map1.png") no-repeat scroll center 80px / cover;
   background-attachment: fixed;
-}
-#how-work{
-  background-color: #FFF;
+  height: 100%;
 }
 #how-work img{
   display: block;
@@ -257,7 +306,8 @@ body {
 #how-work p{
   text-align: center;
   margin: 30px 0px 40px;
-  padding: 0px 15px;
+  font-family: 'Roboto Slab', serif;
+  font-weight: normal;
 }
 .triangle-down {
     border-color: #FFF transparent transparent;
@@ -276,13 +326,18 @@ body {
   color: #FFF;
   line-height: 25px;
   background-color: #2BAF89;
+  font-family: 'Roboto Slab', serif;
 }
 #footer h5 {
-  color: #A9A9A9;
-  font-weight: 700;
+  color: #FFF;
+  font-weight: 500;
+  font-size: 1.2em;
+  margin-left: 3%;
+  font-family: 'Roboto Slab', serif;
 }
 #footer .left-border {
-  border-left: 1px solid #3D3D3D;
+  border-left: 1px solid #FFF;
+  margin-left: 3%;
 }
 #footer ul {
   list-style-type: none;
@@ -301,6 +356,9 @@ body {
   background-color: #FFF;
   padding: 10px 5% 50px;
   min-height: 600px;
+}
+#adr-table{
+  margin-bottom: 15px;
 }
 #adr-table td{
   padding-right: 30px;
@@ -334,7 +392,8 @@ body {
 }
 .wizard a {
   padding: 3px 0 3px 18px; 
-  margin-right:1px; background:#efefef; 
+  margin-right:1px; 
+  background:#efefef; 
   position:relative; 
   display:inline-block;
   text-decoration: none;
@@ -353,14 +412,13 @@ body {
   left: 0;
 }
 .wizard a:after {
-  width:0px; 
-  height:0px; 
-  border-top: 24px inset transparent; 
-  border-bottom: 24px inset transparent; 
+  border-top: 23px inset transparent; 
+  border-bottom: 23px inset transparent; 
   border-left: 20px solid #efefef; 
-  position: absolute; content: ""; 
-  top: 0; 
-  right: -20px; 
+  position: absolute;
+  content: "";
+  top: 0;
+  right: -20px;
   z-index:2;
 }
 .wizard a:first-child:before {
@@ -422,17 +480,14 @@ body {
   border-color: #FF7878;
   padding-left: 40px;
   font-size: 30px;
-  height: 72px;
+  height: 66px;
   border-radius: 40px;
   margin-bottom: 40px;
 }
 .btn-r{
-  padding: 16px 40px;
-  font-size: 28px;
   border-radius: 40px;
   background-color: #FF7878;
   color: #FFF;
-  font-family: 'Comfortaa', cursive;
 }
 .btn-r:hover{
   background-color: #CC6060;
@@ -457,12 +512,28 @@ body {
   background-color: #EBEBE9;
   padding: 30px 0;
 }
+#why{
+  margin-top: -80px;
+}
+#why h2 {
+  font-weight: bolder;
+  font-size: 2.5em;
+}
 .i4{
   max-width: 128px;
 }
 #why .row{
   min-height: 120px;
-  text-align: justify;
+}
+#why h4 {
+  font-weight: bold;
+}
+h4 {
+  letter-spacing: 0px;
+}
+.p120 {
+  font-family: 'Roboto Slab light 300', serif;
+  letter-spacing: 0px;
 }
 #log_me{
   margin-top: 20px;
@@ -476,4 +547,24 @@ body {
 }
 .step{
   display: none;
+}
+
+.input-group-addon{
+  background-color: #FFF;
+  color: #2BAF89;
+}
+#date, #time{
+  background: #FFF url("../img/separator.png") no-repeat right 0 / 1px 100%;
+  border-right: 0;
+}
+.has-error .input-group-addon{
+  background-color: #FFF;
+  color: #2BAF89;
+}
+#why_sofia{
+  font-family: 'Roboto Slab', serif;
+}
+.glyphicon{
+  font-size: 1.25em;
+  padding-right: -5px;
 }

@@ -1,10 +1,10 @@
 /**
- * jQuery Timepicker
+ * jQuery Timepicker - v1.3.2 - 2014-09-13
  * http://timepicker.co
  *
  * Enhances standard form input fields helping users to select (or type) times.
  *
- * Copyright (c) 2012 Willington Vega; Licensed MIT, GPL
+ * Copyright (c) 2014 Willington Vega; Licensed MIT, GPL
  */
 
 if (typeof jQuery !== 'undefined') {

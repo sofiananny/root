@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->view('worker_templates/wheader');
+$this->output->enable_profiler(TRUE);
 $month=array('','Януари','Февруари','Март','Април','Май','Юни','Юли','Август','Септември','Октомври','Ноември','Декември');
 function prep_month($ym,&$periods){
   $week=array('Нд','Пн','Вт','Ср','Чт','Пт','Сб');

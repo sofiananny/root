@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-theme.min.css">
   <script src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap-toggle.min.css">
+  <script src="<?php echo base_url(); ?>assets/js/bootstrap-toggle.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/worker.css">
 </head>
@@ -39,7 +41,6 @@
         <ul class="nav navbar-nav" id="items">
           <li><a href="requests">Моите заявки<span class="sr-only">(current)</span></a></li>
           <li><a href="schedule">График</a></li>
-          <li><a href="delayed_extension">Закъсняло удължаване</a></li>
         </ul>
         <ul class="nav navbar-nav hidden-xs navbar-right">
           <li class="dropdown">
@@ -58,4 +59,3 @@
     </div>
   </nav>
 <?php if (false) { $this->load->view('templates/login_form'); }  ?>
-

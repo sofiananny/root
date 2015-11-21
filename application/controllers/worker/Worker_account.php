@@ -8,11 +8,17 @@ class Worker_account extends CI_Controller {
   public function index(){
     $_SESSION['menu']=200;
     if (!isset($_SESSION['worker_id'])){ $this->load->view('worker_login_view'); }
-    else {
+    elseif {
       $this->load->model('worker_model');
       $data=array();
 //      $data['worker']=$this->users_model->getWorkerData();
       $this->load->view('worker_account_view',$data);
+    }
+    elseif($_SESSION['role'] === 'admin') {
+      $this->load->model('worker_model');
+      $data=array();
+//      $data['worker']=$this->users_model->getWorkerData();
+      $this->load->view('admin_panel', $data);
     }
   }
   function newPass(){

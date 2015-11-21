@@ -36,7 +36,7 @@ $this->load->view('templates/header');
           <div id="success_data" class="alert alert-success" style="display: none; margin: 20px 0;">
             <span class="glyphicon glyphicon-ok"></span> &nbsp; Промените са записани успешно.
           </div>
-          <button type="submit" class="btn btn-info btn-lg pull-right">Запиши промените</button><br/><br/>
+          <button type="submit" id="save_change" class="btn btn-login fw btn-lg">Запиши промените</button><br/><br/>
         </form>
         <form class="col-md-6 col-md-offset-1" action="account/newPass">
           <h3 style="margin: 30px 0;">Смяна на парола</h3>
@@ -64,7 +64,7 @@ $this->load->view('templates/header');
           <div id="success_pass" class="alert alert-success" style="display: none; margin: 20px 0;">
             <span class="glyphicon glyphicon-ok"></span> &nbsp; Паролата е променена успешно.
           </div>
-          <button type="submit" class="btn btn-info btn-lg pull-right">Промени паролата</button>
+          <button type="submit" id="save_change" class="btn btn-login fw btn-lg">Промени паролата</button>
         </form>
       </div>
     </div>
@@ -75,4 +75,3 @@ $this->load->view('templates/header');
 <?php
 $this->load->view('templates/footer');
 ?>
-

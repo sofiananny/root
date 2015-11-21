@@ -1,3 +1,11 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->view('templates/header');
@@ -6,68 +14,69 @@ $this->load->view('templates/header');
     <span class="glyphicon glyphicon-menu-up"></span>
   </a>
   <div id="welcome-div">
-    <div style="height: 100vh;">
-      <div style="display: table; height: 100%; width: 100%;">
-        <div style="display: table-cell; vertical-align: middle; text-align: center; padding-top: 20%;">
-          <center><h1></h1></center>
-          <h3>
-            <p style="margin-bottom: 20px;">намерете бавачка в софия лесно и бързо</p>
-            <button class="btn btn-r" onclick="$('html,body').animate({ scrollTop: $('#nanny-waiting').offset().top-80 }, 800);">
-              присъедини се
-            </button>
-          </h3>
-        </div>
+    <div style="display: table; height: 100%; width: 100%;">
+      <div style="display: table-cell; vertical-align: middle; text-align: center;">
+        <center><h1></h1></center>
+        <h3>
+          <p style="margin-bottom: 20px;">намерете бавачка в Cофия бързо и лесно</p>
+          <button class="btn btn-r" onclick="$('html,body').animate({ scrollTop: $('#nanny-waiting').offset().top-80 }, 800);">
+            присъедини се
+          </button>
+        </h3>
       </div>
-      <div style="width: 100%; background-color: #FFF; position: absolute; bottom: 0; height: 60px">
+    </div>
+    <div style="width: 100%; background-color: #FFF; position: absolute; bottom: 0; height: 60px; opacity: 0.8">
       <a class="btn-dwn" onclick="$('html,body').animate({ scrollTop: $('#how-work').offset().top-80 }, 800);">
         <span class="glyphicon glyphicon-menu-down"></span>
       </a>
-      </div>
     </div>
-    <div id="how-work">
-      <div class="container">
-        <div class="row">
-          <center><h2>Как работи?</h2></center><br/>
-          <div class="col-sm-4">
-            <img alt="time" src="<?php echo base_url(); ?>assets/img/time2.png" width="128px"/>
-            <p>
-              Бавачката идва в уречения час на адреса и гледа детето между 3 и 6 часа
-            </p>
-          </div>
-          <div class="col-sm-4">
-            <img alt="transport" src="<?php echo base_url(); ?>assets/img/transport2.png" width="128px"/>
-            <p>
-              Ние се грижим за организирането на транспорта при пристигането и заминаването на бавачката 
-            </p>
-          </div>
-          <div class="col-sm-4">
-            <img alt="online" src="<?php echo base_url(); ?>assets/img/online2.png" width="128px"/>
-            <p>
-              Всички процеси са онлайн – поръчвате и променяте заявката за посещение директно във Вашия профил 
-              на sofiananny.com
-            </p>
-          </div>
+  </div>
+  <div id="how-work">
+    <div class="container">
+      <div class="row">
+        <center><h2>Как работи?</h2></center><br/>
+        <div class="col-sm-4">
+          <img alt="time" src="<?php echo base_url(); ?>assets/img/time2.png" width="128px"/>
+          <p>
+            Бавачката идва в посочения начален час на адреса и гледа детето за времетраенето на резервираната продължителност
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <img alt="transport" src="<?php echo base_url(); ?>assets/img/transport2.png" width="128px"/>
+          <p>
+            Ние се грижим за организирането на транспорта при пристигането и заминаването на бавачката 
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <img alt="online" src="<?php echo base_url(); ?>assets/img/online2.png" width="128px"/>
+          <p>
+            Bсички процеси са онлайн – поръчвате и променяте заявката за посещение директно във
+<?php 
+  if (isset($_SESSION['userid'])) { echo "            <a href='account'><b>Вашия профил</b></a>\n"; }
+  else { echo "            <a href='' data-toggle='modal' data-target='#nannyLoginModal' onclick=\"showLogin('login-div')\"><b>Вашия профил</b></a>\n";  }
+?>
+          </p>
         </div>
       </div>
     </div>
   </div>
   <div id="nanny-waiting">
-    <div style="height: 90vh;">
-      <div style="padding: 10px 0; background: rgba(255, 255, 255, 0.9)">
-        <center><h3>Запишете се, за да научите първи когато стартираме пълната версия на сайта</h3></center>
-      </div>
-      <div style="height: 35vh;"></div>
-      <form class="container" action="invite">
-        <div class="col-sm-6">
+    <center style="padding: 10px 0; background: rgba(255, 255, 255, 0.9)">
+      <h3>Запишете се, за да научите първи, когато стартираме пълната версия на сайта</h3>
+    </center>
+    <div style="display: table; height: 100%; width: 100%; margin-top: -100px">
+      <form action="invite" style="display: table-cell; vertical-align: middle; text-align: center;">
+        <div class="col-md-6" style="padding-left: 15%">
           <input id="invite" name="email" type="email" class="form-control" required placeholder="email"/>
           <div id="success-invite" class="alert alert-success" style="display: none; width: 100%; padding-top: 25px;">
             <h4>Благодарим Ви! Ще бъдете уведомени, когато сме готови.</h4>
+            <div class="fb-share-button" data-href="https://www.facebook.com/sofiananny/" data-layout="button_count"></div>
           </div>
         </div>
-        <div class="col-sm-6"><center><button type="submit" class="btn btn-r">присъедини се</button></center></div>
+        <div class="col-md-6"><button type="submit" class="btn btn-r">присъедини се</button></div>
       </form>
     </div>
-    <div style="background: rgba(255, 255, 255, 0.7); height: 40px;"></div>
+    <div style="background: rgba(255, 255, 255, 0.7); height: 60px; width: 100%; margin-top: -110px"></div>
   </div>
   <div id="why">
     <div class="container">
@@ -86,13 +95,12 @@ $this->load->view('templates/header');
             </div>
             <div class="col-xs-12 col-sm-10 col-md-12" style="margin-bottom: 15px;">
               <center><h2>Защо SofiaNanny?</h2></center><br/>
-              <p>
-                <i>Кога за последно прекарахте романтична вечер с любимия човек, наслаждавайки се на отлична храна, 
-                отлежало вино и любовта помежду Ви?</i>
+              <p id="why_sofia">
+                Кога за последно прекарахте романтична вечер с любимия човек, наслаждавайки се на любовта помежду Ви?
               </p>
-              <p>
-                <i>Имате ли на разположение доверен човек, на когото да поверите малкото човече за няколко часа и да 
-                сте сигурни, че то е в добри ръце?</i>
+              <p id="why_sofia">
+                Имате ли на разположение доверен човек, на когото да поверите малкото човече за няколко часа и да 
+                сте сигурни, че то е в добри ръце?
               </p>
             </div>
           </div>
@@ -110,7 +118,7 @@ $this->load->view('templates/header');
             <div class="col-xs-9 col-sm-10">
               <h4>Гъвкавост</h4>
               <p class="p120">
-                Наемете бавачка за наколко часа само когато имате нужда. Може да направите заявка за посещение и в 
+                Наемете бавачка за няколко часа само когато имате нужда. Може да направите заявка за посещение и в 
                 последния момент. Ще я приемем!
               </p>
             </div>
@@ -145,7 +153,6 @@ $this->load->view('templates/header');
     <span class="glyphicon glyphicon-menu-up"></span>
   </a>
   <script>
-//    $('#top-div').css('display','none');
     $(window).scroll(function() {
       if ($(window).scrollTop()>$(window).height()-90 && $('.btn-up').css('display')=='none' ||
           $(window).scrollTop()<$(window).height()-90 && $('.btn-up').css('display')=='block') {

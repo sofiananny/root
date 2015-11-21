@@ -14,11 +14,20 @@ class Login extends CI_Controller {
         if ($this->users_model->isExsistUser()) {
           $response['success']=true;
           $response['top_r']=<<<TOP_R
-          <a class="btn btn-danger fw" onclick="json_sbm('login/logout','')">изход</a>
           <a id='to_order' class="btn btn-order fw" onclick="window.location.href='order'">поръчай</a>
-          <a href="account" class="to_account">
-            <span class="glyphicon glyphicon-user to_account_g"></span><span id="usr_names">{$_SESSION['username']}</span>
-          </a>
+          <div class="dropdown pull-right">
+            <button class="btn btn-login fw dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" 
+                    aria-expanded="true">профил <span class="caret"></span></button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="top: 60px; left: auto; right: 0;">
+              <li>
+                <a href="account">
+                  <span class="glyphicon glyphicon-user to_account_g"></span>
+                  <span id="usr_names">{$_SESSION['username']}</span>
+                </a>
+              </li>
+              <li><a href="javascript: void(0)"  onclick="json_sbm('login/logout','')">Изход</a></li>
+           </ul>
+         </div>
 TOP_R;
         }
         else { $errors[]='no_user'; }
@@ -72,11 +81,20 @@ TOP_R;
         $this->users_model->insertUser();
         $response['success']=true;
         $response['top_r']=<<<TOP_R
-          <a class="btn btn-danger fw" onclick="json_sbm('login/logout','')">изход</a>
           <a id='to_order' class="btn btn-order fw" onclick="window.location.href='order'">поръчай</a>
-          <a href="account" class="to_account">
-            <span class="glyphicon glyphicon-user to_account_g"></span><span id="usr_names">{$_SESSION['username']}</span>
-          </a>
+          <div class="dropdown pull-right">
+            <button class="btn btn-login fw dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" 
+                    aria-expanded="true">профил <span class="caret"></span></button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="top: 60px; left: auto; right: 0;">
+              <li>
+                <a href="account">
+                  <span class="glyphicon glyphicon-user to_account_g"></span>
+                  <span id="usr_names">{$_SESSION['username']}</span>
+                </a>
+              </li>
+              <li><a href="javascript: void(0)"  onclick="json_sbm('login/logout','')">Изход</a></li>
+           </ul>
+         </div>
 TOP_R;
     }
     else { foreach ($val->error_array() as $key=>$value) { $errors[]=$key; } }
