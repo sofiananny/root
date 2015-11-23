@@ -72,6 +72,7 @@ foreach ($one_student as $key => $value)
 	<td> $value[recruitment_score]</td>	
 	</tr></table>";
 }
+echo "<form><input Type='button' VALUE='Back' onClick='history.go(-1);return true;''></form>";
 }
 else
 {

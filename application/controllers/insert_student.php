@@ -1,30 +1,16 @@
 <?php
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
- class Student extends CI_Controller {
-     public function index()
-     {
-          $this->load->model('student_model'); 
-          $data['all_students'] = $this->student_model->get_student_list();
-          $this->load->view('admin_panel', $data);
-     }
-     public function view_student()
-     {
-     	$this->load->model('student_model'); 
-        $data['one_student'] = $this->student_model->get_one_student();
-        $this->load->view('view_student', $data);
-     }
-     public function edit_student()
-     {
-     	$this->load->model('student_model'); 
-        $data['one_student'] = $this->student_model->get_one_student();
-        $this->load->view('edit_student', $data);
-     }
-     public function update_student()
-     {
-        $id=$this->input->post('id');
-        $data = array(
+
+class Insert_student extends CI_Controller {
+
+function __construct() {
+parent::__construct();
+$this->load->model('insert_model');
+}
+function index() {
+$data = array(
         'worker_name' => $this->input->post('worker_name'),
         'worker_email' => $this->input->post('worker_email'),
+        'worker_pass'=>md5(trim($this->input->post('pass'))),
         'role' => $this->input->post('role'));
         $data2 = array(
         'phone' => $this->input->post('phone'),
@@ -53,11 +39,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         'recommended_by' => $this->input->post('recommended_by'),
         'recruitment_score' => $this->input->post('recruitment_score')
         );
-        $this->student_model->update_student($id, $data);
-        $this->student_model->update_student2($id, $data2);
-     }
-     public function add_student()
-     {
-        $this->load->view('add_student');
-     }
+$this->insert_model->form_insert($data, $data2);
+$data['message'] = 'Data Inserted Successfully';
+redirect('students');
 }
+}
+
+}
+
+?>
