@@ -9,14 +9,20 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
      }
      public function view_student()
      {
-     	$this->load->model('one_student_model'); 
-        $data['one_student'] = $this->one_student_model->get_one_student();
+     	$this->load->model('student_model'); 
+        $data['one_student'] = $this->student_model->get_one_student();
         $this->load->view('view_student', $data);
      }
      public function edit_student()
      {
-     	$this->load->model('one_student_model'); 
-        $data['one_student'] = $this->one_student_model->get_one_student();
+     	$this->load->model('student_model'); 
+        $data['one_student'] = $this->student_model->get_one_student();
         $this->load->view('edit_student', $data);
+     }
+     public function add_student()
+     {
+        $this->load->model('student_model');
+        $data['add_student'] = $this->student_model->add_student();
+        $this->load->view('add_student', $data);
      }
 }

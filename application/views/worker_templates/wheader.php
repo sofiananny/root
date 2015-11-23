@@ -32,7 +32,11 @@
             <ul class="dropdown-menu">
               <li><a href="worker_account">Моят профил</a></li>
               <li role="separator" class="divider"></li>
+              <?php if($_SESSION['role']==='admin'){ ?>
+              <li><a href="javascript:void(0)" onclick="json_sbm('worker/login/logout_worker', '')">Изход</a></li>
+              <?php } else {?>
               <li><a href="javascript:void(0)" onclick="json_sbm('login/logout_worker','')">Изход</a></li>
+              <?php }?>
             </ul>
           </li>
         </ul>
@@ -50,7 +54,11 @@
             <ul class="dropdown-menu">
               <li><a href="worker_account">Моят профил</a></li>
               <li role="separator" class="divider"></li>
+              <?php if($_SESSION['role']==='admin'){ ?>
+              <li><a href="javascript:void(0)" onclick="json_sbm('worker/login/logout_worker', '')">Изход</a></li>
+              <?php } else {?>
               <li><a href="javascript:void(0)" onclick="json_sbm('login/logout_worker','')">Изход</a></li>
+              <?php }?>
             </ul>
           </li>
         </ul>

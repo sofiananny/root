@@ -7,7 +7,7 @@
 class Login extends CI_Controller {
   public function index(){
     $_SESSION['menu']=100;
-    if (isset($_SESSION['worker_id']) && $_SESSION['role']==="admin"){ redirect('student'); }
+    if (isset($_SESSION['worker_id'])){ redirect('student'); }
     else {$this->load->view('worker_login_view'); }
   }
  public function login_worker(){

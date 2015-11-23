@@ -1,3 +1,4 @@
+<?php if (isset($_SESSION['worker_id']) && $_SESSION['role'] === 'admin'){ ?>
 <?php $this->load->view('worker_templates/wheader');
 $this->output->enable_profiler(TRUE);
 echo "<br/><br/><br/><br/><br/><div class='col-lg-12' style='text-align: center'><table class='table table-striped table-responsive' border 1 px black>
@@ -70,5 +71,10 @@ foreach ($one_student as $key => $value)
 	<td> $value[recommended_by]</td>
 	<td> $value[recruitment_score]</td>	
 	</tr></table>";
+}
+}
+else
+{
+	redirect('worker/requests');
 }
 $this->load->view('worker_templates/wfooter'); ?>
