@@ -60,12 +60,14 @@
 <script type="text/javascript">$(document).ready( function () {
     $('#admintable').DataTable();
 } );</script>
+
 <?php
 $this->output->enable_profiler(TRUE);
 echo "<br/><br/><br/><br/><br/><div class='col-lg-12' style='text-align: center'><table class='table table-striped table-responsive' border 1 px black>
 <tr><td>ID</td>
 <td>Name</td>
 <td>Role</td>
+<td>Email</td>
 <td>Sex</td>
 <td>Phone Number</td>
 <td>Date of Birth</td>
@@ -76,6 +78,7 @@ echo "<br/><br/><br/><br/><br/><div class='col-lg-12' style='text-align: center'
 	echo "<tr><td> $one_student[worker_id]</td>
 	<td> $one_student[worker_name]</td>
 	<td> $one_student[role]</td>
+  <td> $one_student[worker_email]</td>
 	<td> $one_student[sex]</td>
 	<td> $one_student[phone]</td>
 	<td> $one_student[date_of_birth]</td>
@@ -128,7 +131,8 @@ echo "<div class='col-lg-12' style='text-align: center'><table class='table tabl
 	<td> $one_student[recruitment_score]</td>	
 	</tr></table>";
 echo "<form><input Type='button' VALUE='Back' onClick='history.go(-1);return true;''></form>";
-echo "<a href='/student/delete_student'>Delete student</a>";
+echo "<br/><br/><br/><br/>";
+echo "<a href='delete_student'>Delete student</a>";
 }
 else
 {

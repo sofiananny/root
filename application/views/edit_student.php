@@ -55,18 +55,16 @@
       </div>
     </div>
   </nav>
-<?php if (false) { $this->load->view('templates/login_form'); }  ?>
-<script type="text/javascript">$(document).ready( function () {
-    $('#admintable').DataTable();
-} );</script>
 <?php 
-$this->output->enable_profiler(TRUE);
+echo "<br/><br/><br/><br/>";
 
-echo "<br/><br/><br/><br/><br/>";
-
-$hidden = array('worker_id' => "$_GET[id]", 'student_id' => "$_GET[id]");
 echo "<div class='col-xs-6' style='text-align: center'>";
-echo form_open('student/update_student', '', $hidden);
+$hidden = array('worker_id' => "$_GET[id]", 'student_id' => "$_GET[id]");
+echo form_open_multipart('student/update_student', '', $hidden);
+
+	echo form_label('Upload New Image:', 'upload');
+	echo "<p style='margin-left: 40%;'>" . form_upload() . "</p>";
+	echo "<br/><br/>";
 
 	echo form_label('Name&nbsp', 'worker_name');
 	echo form_input('worker_name', $one_student['worker_name']);
@@ -80,9 +78,11 @@ echo "<br/><br/>";
 	echo form_label('Phone&nbsp', 'phone');
 	echo form_input('phone', $one_student['phone']);
 echo "<br/><br/>";
-	echo form_label('Date of Birth&nbsp', 'date_of_birth');
-	echo form_input('date_of_birth', $one_student['date_of_birth']);
-echo "<br/><br/>";
+
+echo form_label('Date of Birth&nbsp', 'date_of_birth');
+	echo "<input type='date' name='date_of_birth' value=". $one_student['date_of_birth'] . ">";
+	echo "<br/><br/>";
+
 	echo form_label('Sex&nbsp', 'sex');
 	echo form_input('sex', $one_student['sex']);
 echo "<br/><br/>";
@@ -156,9 +156,9 @@ echo "<br/><br/>";
 echo "<br/><br/>";
 	echo form_label('Score from recruitment test&nbsp', 'recruitment_score');
 	echo form_input('recruitment_score', $one_student['recruitment_score']);
-	echo "<br/><br/>";
+	echo "<br/>";
 	echo "<form><input Type='button' VALUE='Back' onClick='history.go(-1);return true;''></form> &nbsp";
-	echo form_submit('edit_student', 'Update');
+	echo form_submit('Edit', 'Update');
 	echo "</div>";
 	
 echo form_close();
