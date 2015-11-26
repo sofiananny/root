@@ -16,33 +16,35 @@
   <link href='https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<?php if (!isset($_SESSION['userid'])) { $this->load->view('templates/login_form'); } ?>
+<?php if (!isset($_SESSION['userid'])) { $this->load->view('templates/login_form'); }  ?>
   <div id="nanny-header-wrap">
     <div id="top-div">
-      <div class="container"><a class="logo" href="<?php echo base_url(); ?>"></a></div>
+      <div class="container">
+        <a class="logo" href="<?php echo base_url(); ?>" 
+           style="">
+<!--<p style="margin-left: 62px; margin-top: -26px; color: #444; width: 130px;"><i><b>градска бавачка</b></i></p> -->
+        </a>
+      </div>
     </div>
     <div class="header-content container">
       <div class="small-header-wrap">
         <div id="top_r" class="pull-right" style="position: relative">
-          <a id='to_order' class="btn btn-order fw" onclick="window.location.href='order'">поръчай</a>
-<?php if (!isset($_SESSION['userid'])) { //Не е логнат потребител *********** ?>
-           <a class="btn btn-login fw" data-toggle="modal" data-target="#nannyLoginModal" onclick="$('html,body').animate({ scrollTop: $('login-div').offset().top-80 }, 800);">вход</a>
-<?php  } else { // Логнат потребител **************************************** ?>
-          <div class="dropdown pull-right">
-            <button class="btn btn-login fw dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" 
-                    aria-expanded="true">профил <span class="caret"></span></button>
-            <ul id="profile" class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li>
-                <a href="account">
-                  <span class="glyphicon glyphicon-user to_account_g"></span>
-                  <span id="usr_names"><?php echo $_SESSION['username']; ?></span>
-                </a>
-              </li>
-              <li><a href="javascript: void(0)"  onclick="json_sbm('login/logout','')">Изход</a></li>
-           </ul>
-         </div>
-<?php  } ?>
+<?php 
+  if (!isset($_SESSION['userid'])) { //Не е логнат потребител ******************
+    echo "          <a id=\"enter\" class=\"btn btn-login fw\" data-toggle=\"modal\" data-target=\"#nannyLoginModal\"";
+    echo " onclick=\"showLogin('login-div')\">вход</a>\n";
+  }
+  else { // Логнат потребител **************************************************
+    echo "          <a class=\"btn btn-login fw\" onclick=\"json_sbm('login/logout','')\">изход</a>\n";
+  }
+  echo "          <a id='to_order' class=\"btn btn-order fw\" onclick=\"window.location.href='order'\">поръчай</a>\n";
+  if (isset($_SESSION['userid'])) { //Към профила на потребител ****************
+    echo "          <a href=\"account\" class=\"to_account\"><span class=\"glyphicon glyphicon-user to_account_g\">";
+    echo "</span><span id=\"usr_names\">{$_SESSION['username']}</span></a>\n";
+  }
+?>
         </div>
       </div>
     </div>
   </div>
+<?php  // var_dump($_SESSION); ?>

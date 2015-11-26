@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2015 at 02:44 PM
+-- Generation Time: Nov 26, 2015 at 11:24 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -241,16 +241,17 @@ CREATE TABLE IF NOT EXISTS `workers` (
   `worker_name` varchar(50) NOT NULL,
   `worker_email` varchar(50) NOT NULL,
   `role` varchar(10) NOT NULL,
-  `worker_pass` varchar(32) NOT NULL
+  `worker_pass` varchar(32) NOT NULL,
+  `date_deleted` date DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `workers`
 --
 
-INSERT INTO `workers` (`worker_id`, `worker_name`, `worker_email`, `role`, `worker_pass`) VALUES
-(1, 'Иванка Иванова', 'mail@mail.com', 'worker', '81dc9bdb52d04dc20036dbd8313ed055'),
-(2, 'Михаил Иванчев', 'mivanchev@gmail.com', 'admin', 'ff8b33735675d5146b6e5b3d9affc22c');
+INSERT INTO `workers` (`worker_id`, `worker_name`, `worker_email`, `role`, `worker_pass`, `date_deleted`) VALUES
+(1, 'Иванка Иванова', 'mail@mail.com', 'worker', '81dc9bdb52d04dc20036dbd8313ed055', NULL),
+(2, 'Михаил Иванчев', 'mivanchev@gmail.com', 'admin', 'ff8b33735675d5146b6e5b3d9affc22c', NULL);
 
 -- --------------------------------------------------------
 
@@ -293,8 +294,8 @@ CREATE TABLE IF NOT EXISTS `worker_details` (
 --
 
 INSERT INTO `worker_details` (`student_id`, `phone`, `date_of_birth`, `sex`, `university`, `speciality`, `prof_interest`, `smoker`, `alergies`, `alergies_specific`, `about`, `interests1`, `interests2`, `interests3`, `interests4`, `idcard_address`, `current_address`, `address1`, `address2`, `em_contact_name`, `em_telephone`, `em_email`, `em_connection`, `em_address`, `avg_score`, `recommended_by`, `recruitment_score`) VALUES
-(1, 123, '2015-11-11', 'female', 'some', 'some', 'sdfa', 'no', 'no', 'no', 'no', 'asdf', 'asdf', 'asdf', 'asdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 5614564, 'asdfasdf', 'sadfasdf', 'asdfasdf', 5, 'asdfasdf', 6),
-(2, 56654, '2015-11-01', 'male', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'yes', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'ffgdg', 'dfgdfg', 'sdfgsdfg', 'sdfgsdfg', 'sdfgsdfg', 'dfsdgfsdgf', 'sdfgsdfg', 667987, 'dfsdfg', 'dfgsdfg', 'asDFGAERG', 4, 'dsfgsdfggf', 3);
+(1, 123, '2015-11-11', 'female', 'some', 'some', 'sdfa', 'no', 'no', 'no', 'no', 'asdf', 'asdf', 'asdf', 'asdf', 'asdfasdf', '1234', 'asdfasdf', 'asdfasdf', 'asdfasdf', 5614564, 'asdfasdf', 'sadfasdf', 'asdfasdf', 5, 'asdfasdf', 5),
+(2, 56654, '2015-11-01', 'male', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'yes', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'ffgdg', 'dfgdfg', 'sdfgsdfg', '1234', 'sdfgsdfg', 'dfsdgfsdgf', 'sdfgsdfg', 667987, 'dfsdfg', 'dfgsdfg', 'asDFGAERG', 5, 'dsfgsdfggf', 5);
 
 --
 -- Indexes for dumped tables

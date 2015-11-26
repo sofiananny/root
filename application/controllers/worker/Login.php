@@ -24,6 +24,7 @@ class Login extends CI_Controller {
     $response['success']=true;
     header('Content-Type: application/json');
     echo json_encode($response);
+    redirect('worker/requests');
   }
 }
 

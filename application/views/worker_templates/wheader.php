@@ -11,6 +11,8 @@
   <script src="<?php echo base_url(); ?>assets/js/bootstrap-toggle.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/worker.css">
+  <link rel="stylesheet" type="text/css" href="http:////cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css"> <!--datatables-->
+  <script type="text/javascript" charset="utf8" src="http:////cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script><!--datatables-->
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top">
@@ -67,3 +69,6 @@
     </div>
   </nav>
 <?php if (false) { $this->load->view('templates/login_form'); }  ?>
+<script type="text/javascript">$(document).ready( function () {
+    $('#admintable').DataTable();
+} );</script>

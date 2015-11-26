@@ -1,29 +1,18 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 
-class student_model extends CI_Model{
-    public function get_student_list()
-     {
-		$this->db->from('workers');
-		$this->db->join('worker_details', 'worker_details.student_id = workers.worker_id');
-        $q = $this->db->get();
-          return $q->result_array();
-     }
-    public function get_one_student()
-     {
-		$this->db->from('workers');
-		$this->db->join('worker_details', 'worker_details.student_id = workers.worker_id');
-		$this->db->where('worker_id', $_GET['id']);
-        $q = $this->db->get();
-          return $q->row_array();
-     }
-    public function update_student()
-     {
-        $id=$this->input->post('worker_id');
-        $data = array(
+class Insert_student extends CI_Controller {
+
+function __construct() {
+parent::__construct();
+$this->load->model('insert_model');
+}
+function index() {
+$data = array(
         'worker_name' => $this->input->post('worker_name'),
         'worker_email' => $this->input->post('worker_email'),
+        'worker_pass'=>md5(trim($this->input->post('pass'))),
         'role' => $this->input->post('role'));
-        $data2 = array(
+$data2 = array(
         'phone' => $this->input->post('phone'),
         'date_of_birth' => $this->input->post('date_of_birth'),
         'sex' => $this->input->post('sex'),
@@ -50,11 +39,9 @@ class student_model extends CI_Model{
         'recommended_by' => $this->input->post('recommended_by'),
         'recruitment_score' => $this->input->post('recruitment_score')
         );
-        $this->db->where('worker_id', $id);
-        $this->db->update('workers', $data);
-        $this->db->where('student_id', $id);
-        $this->db->update('worker_details', $data2);
-        return redirect('student');
-        
-     }
+$this->insert_model->form_insert($data, $data2);
+$data['message'] = 'Data Inserted Successfully';
+redirect('students');
 }
+}
+?>
