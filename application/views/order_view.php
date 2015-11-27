@@ -132,10 +132,11 @@ $url=base_url().'assets/img';
               </div>
             </div>
           </div>
+          <center style="margin: 40px 0"><h1>Брой деца, за които искате да се грижим, в тази поръчка</h1></center>
           <div class="row">
           <div class="col-md-12">
             <div class="col-sm-6 form-group">
-              <label class="col-sm-6 control-label">Брой деца, за които искате да се грижим, в тази поръчка</label>
+              <label class="col-sm-6 control-label">Брой</label>
                 <div class="col-sm-6">
                   <select id="kids_count" class="form-control" name="kids_count" style="padding-right: 0;" onchange="">
                     <option class="form-control" style="display: none;" value="0"></option>
