@@ -61,7 +61,6 @@
     $('#admintable').DataTable();
 } );</script>
 <?php	
-$this->output->enable_profiler(TRUE);
 $this->load->helper('form');
 echo "<br/><br/><br/><br/><br/>";
 echo form_open_multipart('student/insert_student');
@@ -163,7 +162,7 @@ echo form_open_multipart('student/insert_student');
 
 	echo form_label('Interest3&nbsp', 'interests3');
 	echo form_input('interests3', set_value('interests3'));
-	echo form_error('interests3');
+	echo form_error('interests3', '<div class="error" style="color: red;">', '</div>');
 	
 	echo "<br/><br/>";
 
@@ -226,9 +225,11 @@ echo form_open_multipart('student/insert_student');
 	echo form_label('Score from recruitment test&nbsp', 'recruitment_score');
 	echo form_input('recruitment_score', set_value('recruitment_score'));
 	echo "<br/><br/>";
-	echo "<form><input Type='button' value='Back' onClick='history.go(-1);return true;set_value('')></form> &nbsp";
 	echo form_submit('add_student', 'Add');
+	echo "<br/><br/>";
+	echo anchor("student", 'Back', array('class' => 'btn btn-info', 'role'=>'button'));
 	echo "</div>";
+	echo form_close();
 }
 else
 {

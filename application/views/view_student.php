@@ -62,7 +62,6 @@
 } );</script>
 
 <?php
-$this->output->enable_profiler(TRUE);
 echo "<br/><br/><br/><br/><br/><div class='col-lg-12' style='text-align: center'><table class='table table-striped table-responsive' border 1 px black>
 <tr><td>ID</td>
 <td>Name</td>
@@ -130,9 +129,9 @@ echo "<div class='col-lg-12' style='text-align: center'><table class='table tabl
 	<td> $one_student[recommended_by]</td>
 	<td> $one_student[recruitment_score]</td>	
 	</tr></table>";
-echo "<form><input Type='button' VALUE='Back' onClick='history.go(-1);return true;''></form>";
+echo anchor("student", 'Back', array('class' => 'btn btn-info', 'role'=>'button'));
 echo "<br/><br/><br/><br/>";
-echo "<a href='delete_student'>Delete student</a>";
+echo "<a href='delete_student?id=$one_student[worker_id]' class='col-lg-2 btn btn-danger' role='button'>Delete student</a>";
 }
 else
 {

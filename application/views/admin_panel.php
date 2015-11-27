@@ -57,30 +57,34 @@
   </nav>
 <?php if (false) { $this->load->view('templates/login_form'); }  ?>
 <script type="text/javascript">$(document).ready( function () {
-    $('#admintable').DataTable();
+    $('#adm').DataTable();
 } );</script>
 <?php 
 if (isset($_SESSION['worker_id']) && $_SESSION['role'] === 'admin'){
-echo '<br/><br/><br/><br/><br/>
-	<div class="col-lg-12" style="text-align: center">
-	<a href="student/add_student" class="col-xs-1 btn btn-danger" role="button">Add Student</a><br/><br/>
-	<table id="admintable"class="table table-striped" border 1 px black>
-	<tr><td>No</td>
-	<td>Name</td>
-	<td>View Profile</td>
-	<td>Edit Student</td></tr>
+echo '<br/><br/><br/><br/><br/>';
+	echo '<div class="col-lg-12" style="text-align: center">';
+  echo anchor('student/add_student', 'Add Student', array('class'=> 'col-xs-1 btn btn-success', 'role'=>'button'));
+  echo '<br/><br/>';
+	echo '<table id="adm" class="table table-striped" border 1 px black>
+	<thead>
+    <tr><th>No</th>
+  	<th>Name</th>
+  	<th>View Profile</th>
+  	<th>Edit Student</th></tr>
+  </thead>
+  <tbody>
 	';
 	$num=1;
 	foreach ($all_students as $key => $value)
 	{
-		echo "<tr><td> $num</td>
-		<td> $value[worker_name]</td>
-		<td><a href='student/view_student?id=$value[worker_id]' class='btn btn-success' id='$value[worker_id]' role='button'>View</td>
-		<td><a href='student/edit_student?id=$value[worker_id]' class='btn btn-info' id='$value[worker_id]' role='button'>Edit</td>
-		</tr>";
+		echo "<tr><td> $num</td>";
+		echo "<td> $value[worker_name]</td>";
+		echo "<td>" . anchor("student/view_student?id=$value[worker_id]", 'View', array('class' => 'btn btn-info', 'id'=> $value['worker_id'], 'role'=>'button')) . "</td>";
+		echo "<td>" . anchor("student/edit_student?id=$value[worker_id]", 'Edit', array('class' => 'btn btn-primary', 'id'=> $value['worker_id'], 'role'=>'button')) . "</td>";
+		echo "</tr>";
 		$num++;
 	}
-echo "</table></div>";
+echo "</tbody></table></div>";
 }
 else
 {

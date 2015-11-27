@@ -1,6 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class student_model extends CI_Model{
+
     public function get_student_list()
      {
 		$this->db->from('workers');
@@ -18,9 +19,16 @@ class student_model extends CI_Model{
         $q = $this->db->get();
           return $q->row_array();
      }
+     public function edit_student()
+     {
+        $this->load->helper('form');
+        $this->load->model('student_model');
+        $data['one_student']= $this->load->student_model->get_one_student();
+        $this->load->view('edit_student', $data);
+     }
     public function update_student()
      {
-        $id=$this->input->post('worker_id');
+        $id = $this->input->post('worker_id');
         $data = array(
         'worker_name' => $this->input->post('worker_name'),
         'worker_email' => $this->input->post('worker_email'),
@@ -56,7 +64,7 @@ class student_model extends CI_Model{
         $this->db->update('workers', $data);
         $this->db->where('student_id', $id);
         $this->db->update('worker_details', $data2);
-        return redirect('student');   
+          
      }
      public function insert_student()
      {
@@ -98,10 +106,10 @@ class student_model extends CI_Model{
      }
      public function delete_student()
      {
-        $id5=$this->input->post('worker_id');
-        $this->db->set('date_deleted', 10-10-10);
-        $this->db->insert('workers');
-        $this->db->where('worker_id', $id5);
-        return redirect('student');
+        $student_id=$this->input->get('id');
+        $now = date('Y-m-d');
+        $data=array('date_deleted' => $now);
+        $this->db->where('worker_id', $student_id);
+        return $this->db->update('workers', $data);
      }
 }

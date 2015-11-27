@@ -29,11 +29,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
      }
      public function update_student()
      {  
-        redirect('student');
-        $this->load->helper('file');
-        $this->load->helper('form');
         $this->load->model('student_model');
         $this->student_model->update_student();
+        //redirect('student');
      }
     public function add_student()
     {
@@ -45,7 +43,6 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     public function insert_student()
     {
         $this->load->helper('file');
-        $this->output->enable_profiler(TRUE);
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->form_validation->set_rules('worker_name', 'Name', 'required');
@@ -74,9 +71,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 }
     }
     public function delete_student()
-    {
+    {  
         $this->load->model('student_model');
         $this->student_model->delete_student();
+        redirect('student');
     }
     public function do_upload()
         {
