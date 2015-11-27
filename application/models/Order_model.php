@@ -15,5 +15,45 @@ class Order_model extends CI_Model {
     }
     return $districts;
   }
+
+  function add_order()
+  {
+    $now = date('Y-m-d H:i:s');
+    //switch format from m/d/y to d/m/y
+    $date_arr = explode('/', $_SESSION['order']['date']);
+    $tmp = $date_arr[0];
+    $date_arr[0] = $date_arr[1];
+    $date_arr[1] = $tmp;
+    $date2 = implode('/', $date_arr);
+    
+    $date = date_create($date2);
+    $order_date = date_format($date, 'Y-m-d');
+
+    $data = array(
+      'parent_id' => 1//TODO
+      ,'city' => $_SESSION['order']['city']
+      ,'street' => $_SESSION['order']['street']
+      ,'street_number' => $_SESSION['order']['number']
+      ,'building' => $_SESSION['order']['building']
+      ,'gate' => $_SESSION['order']['gate']
+      ,'floor' => $_SESSION['order']['floor']
+      ,'apartment' => $_SESSION['order']['apartment']
+      ,'floor' => $_SESSION['order']['floor']
+      ,'notes' => $_SESSION['order']['note']
+      ,'order_date' => $order_date
+      ,'order_time' => $_SESSION['order']['time']
+      ,'duration' => $_SESSION['order']['duration']
+      ,'kids_count' => $_SESSION['order']['kids_count']
+      ,'nanny_id1' => $_SESSION['order']['nanny_id1']
+      ,'nanny_id2' => $_SESSION['order']['nanny_id2']
+      ,'nanny1_price' => $_SESSION['order']['nanny1_price']
+      ,'nanny2_price' => $_SESSION['order']['nanny2_price']
+      ,'taxi1_price' => $_SESSION['order']['taxi']
+      ,'taxi2_price' => $_SESSION['order']['taxi']
+      ,'date_created' => $now
+    );
+
+    return $this->db->insert('orders', $data);
+  }
 }
 

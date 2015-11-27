@@ -10,11 +10,15 @@ class Order extends CI_Controller {
     if (!isset($_SESSION['order'])){
       $_SESSION['order']=array(
         'city'=>1,'district'=>0,'street'=>'','number'=>'','building'=>'','gate'=>'','floor'=>'','apartment'=>'',
-        'note'=>'','date'=>'','time'=>'','duration'=>0,'payment'=>1,'price'=>0,'taxi'=>0,'worker_id'=>0,'valid'=>false
+        'note'=>'','date'=>'','time'=>'','duration'=>0,'payment'=>1,'price'=>0,'taxi'=>0,'worker_id'=>0,'valid'=>false,
+        'kids_count' => 0, 'kid_name[1]'=>'', 'kid_age[1]'=>0, 'kid_gender[1]'=>'',
+        'nanny_id1'=>0, 'nanny1_price'=>0, 'taxi1_price'=>0, 'nanny_id2'=>0, 'nanny2_price'=>0, 'taxi2_price'=>0
       );
     }
     $this->load->model('order_model');
+    $this->load->model('worker_model');
     $data['districts']=$this->order_model->read_districts(array('city_id'=>1),$_SESSION['order']['district']);
+    $data['all_nanies_list'] = $this->worker_model->get_all_nannies();
     $this->load->view('order_view',$data);
   }
   function validate(){
@@ -30,6 +34,7 @@ class Order extends CI_Controller {
         if (isset($uppercase[$key])) { $_SESSION['order'][$key]=mb_strtoupper(trim($val),"utf-8"); }
         else $_SESSION['order'][$key]=trim($val);
       }
+      
       if (isset($_POST['invoice'])) { $_SESSION['order']['invoice']=1; } 
       else { $_SESSION['order']['invoice']=0; }
     }
@@ -55,14 +60,52 @@ class Order extends CI_Controller {
       if (!preg_match("/(2[0-3]|[01][0-9]):([0-5][0-9])/",$tm)){
         $errors[]='time';
       }
-      if (!$_SESSION['order']['duration']) { $errors[]='duration'; }
-      if (!empty($errors)) { $response['step']=2; } else { $this->calc_price(); }
+      if (!$_SESSION['order']['duration']) { 
+        $errors[]='duration'; 
+      }
+    
+      if(!$_SESSION['order']['kids_count']){
+        $errors[]='kids_count';
+
+      }
+      /*else
+      {
+        for($i = 0; $i < $_SESSION['order']['kids_count']; $i++)
+        {
+          if(!$_SESSION['order']['kid_name[$i]']) 
+          {
+            $errors[]='kid_name[$i]';
+          } 
+          if(!$_SESSION['order']['kid_age[$i]']) 
+          {
+            $errors[]='kid_age[$i]';
+          }       
+        }
+      }
+    */
+    
+
+      if (!empty($errors)) { 
+        $response['step']=2; 
+      } else { 
+        $this->calc_price(); 
+      }
     } // ***********************************************************************
     $total=$_SESSION['order']['price']+$_SESSION['order']['taxi'];
     $response['price']=(int)$total;
+
     $response['supprice']=STR_PAD(round($total*100-$response['price']*100),2,"0",STR_PAD_LEFT);
     if ($response['step']>3) { // Валидация стъпка 3 ***************************
-      if (!empty($errors)) { $response['step']=3; } // *************************
+      // if (!$_SESSION['order']['first_nanny_id']) { 
+      //   $errors[]='select_first_nanny'; 
+      // }
+      // if (!$_SESSION['order']['second_nanny_id']) { 
+      //   $errors[]='select_second_nanny'; 
+      // }
+
+      if (!empty($errors)) { 
+        $response['step']=3;
+      }
       else { // Генериране на данни за стъпка 4 ********************************
         $_SESSION['order']['valid']=true;
         $adr="<label class='data-label'>гр.София</label><br/>кв. <label class='data-label'>";
@@ -121,7 +164,14 @@ class Order extends CI_Controller {
     echo json_encode($response);
   }
   private function calc_price(){
-    $_SESSION['order']['price']=$_SESSION['order']['duration']*15.02;
+    $nannies_count = 1;
+    $_SESSION['order']['nanny1_price']=$_SESSION['order']['duration']*15.02;
+    if($_SESSION['order']['kids_count'] > 2)
+    {
+      $nannies_count = 2;
+      $_SESSION['order']['nanny2_price']=$_SESSION['order']['duration']*15.02;
+    }
+    $_SESSION['order']['price']=$_SESSION['order']['duration']*15.02*$nannies_count;
     $_SESSION['order']['taxi']=7.24;
   }
 }

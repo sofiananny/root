@@ -2,8 +2,24 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->view('templates/header');
 $url=base_url().'assets/img';
-$script="    $('#duration').val({$_SESSION['order']['duration']});\n";
+//$script="    $('#duration').val({$_SESSION['order']['duration']});\n";
 ?>
+<script type="text/javascript">
+  function show_nannies_count_title()
+  {
+      $('#choose_nannies_title').empty();
+      $('#second-nanny').hide();
+   
+      var nannies_title = '<span> Изберете своята бавачка </span>';
+      if($('#kids_count').val() > 2)
+      {
+        nannies_title = '<span> Изберете своите бавачки </span>'; 
+        $('#second-nanny').show();
+      }
+      $(nannies_title).appendTo('#choose_nannies_title');
+  }
+</script>
+
   <div class="blue">
     <div class="white-container container">
       <center style="margin: 40px 0">
@@ -16,7 +32,7 @@ $script="    $('#duration').val({$_SESSION['order']['duration']});\n";
       </center>
       <form id="order_data" action="order/validate">
         <div id="step1" class="step">
-          <center style="margin: 40px 0"><h1>Къде искате да ви посети нашата Nanny?</h1></center>
+          <center style="margin: 40px 0"><h1>Къде искате да ви посети нашата бавачка?</h1></center>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -82,7 +98,7 @@ $script="    $('#duration').val({$_SESSION['order']['duration']});\n";
               <div class="col-sm-6 form-group">
                 <label class="col-sm-4 control-label">Дата</label>
                 <div class="col-sm-8 input-group input-append date">
-                  <input id="date" type="text" class="form-control" name="date" readonly value="<?php echo $_SESSION['order']['date']; ?>"/>
+                  <input id="date" data-format="yyyy--MM-dd" type="text" class="form-control" name="date" readonly value="<?php echo $_SESSION['order']['date']; ?>"/>
                   <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
                 <span class="help-block pull-right">Изберете дата!</span>
@@ -116,11 +132,69 @@ $script="    $('#duration').val({$_SESSION['order']['duration']});\n";
               </div>
             </div>
           </div>
+          <div class="row">
+          <div class="col-md-12">
+            <div class="col-sm-6 form-group">
+              <label class="col-sm-6 control-label">Брой деца, за които искате да се грижим, в тази поръчка</label>
+                <div class="col-sm-6">
+                  <select id="kids_count" class="form-control" name="kids_count" style="padding-right: 0;" onchange="">
+                    <option class="form-control" style="display: none;" value="0"></option>
+                    <option class="form-control" value="1">1 дете</option>
+                    <option class="form-control" value="2">2 деца</option>
+                    <option class="form-control" value="3">3 деца</option>
+                    <option class="form-control" value="4">4 деца</option>
+                    <option class="form-control" value="5">5 деца</option>
+                    <option class="form-control" value="6">6 деца</option>
+                    <option class="form-control" value="7">повече деца</option>
+                  </select>
+
+                  <!--<input id="kids_count" class="form-control" type="text" name="kids_count"
+                           value="<?php echo $_SESSION['order']['kids_count']; ?>"/>-->
+                  
+                </div>
+                <span class="help-block pull-right">Изберете брой деца!</span>
+              </div>
+            </div>
+            <div class="col-md-12" id="kids_data">
+
+            </div>
+          </div>
         </div>
         <div id="step3" class="step">
-          <center style="margin: 40px 0"><h1>Изберете своята бавачка</h1></center>
+          <center style="margin: 40px 0"><h1 id="choose_nannies_title"></h1></center>
           <div class="row">
+            <div class="col-md-6" id="first-nanny">
+              <div class="form-group">
+                    <?php
+                      foreach ($all_nanies_list as $value) {
+                        echo "<div class='col-sm-11'>
+                          $value[worker_name] 
+                          <input type='radio' name='nanny_id1' value='$value[worker_id]'/>
+                         
+                        </div><hr/>";
+                      }
+                    ?>
+                <span class="help-block pull-right">Изберете бавачка!</span>
+              </div>
+            </div>
 
+            <div class="col-md-6" id="second-nanny">
+              <div class="form-group">
+                    <?php
+                      foreach ($all_nanies_list as $value) {
+                        echo "<div class='col-sm-11'>
+                          $value[worker_name] 
+                          <input type='radio' name='nanny_id2' value='$value[worker_id]'/>
+
+                        </div><hr/>";
+                      }
+                    ?>
+                <span class="help-block pull-right">Изберете бавачка!</span>
+              </div>
+            </div>
+            <div class="col-md-12" id="kids_data">
+
+            </div>
           </div>
         </div>
         <div id="step4" class="step">
@@ -161,8 +235,8 @@ $script="    $('#duration').val({$_SESSION['order']['duration']});\n";
         </center>
         <hr/>
 </div>
-      <a id="next" class="btn btn-login fw pull-right" onclick="next(2);" style="width: 200px;">продължи</a>
-      <a id="pay" class="btn btn-warning btn-lg pull-right" style="display: none;" onclick="agree()">поръчай</a>
+      <div id="next" class="btn btn-login fw pull-right" onclick="next(2);" style="width: 200px;">продължи</div>
+      <div id="pay" class="btn btn-warning btn-lg pull-right" style="display: none;" onclick="agree()">поръчай</div>
     </div>
   </div>
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap-datepicker/css/bootstrap-datepicker3.css">
@@ -171,6 +245,7 @@ $script="    $('#duration').val({$_SESSION['order']['duration']});\n";
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/jquery.timepicker.css" type="text/css"/>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
   <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.timepicker.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/orders-kids.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
   <script>
     var geocoder;
@@ -249,6 +324,9 @@ $script="    $('#duration').val({$_SESSION['order']['duration']});\n";
           $('#next').attr("onclick","next(1)");
         }
       }
+      if(step == 3){
+        show_nannies_count_title();
+      }
     }
     function show_step(step,order_prop,pay_prop){
       if (!$(".wizard a:nth-child("+step+")" ).hasClass("current")) {
@@ -275,23 +353,34 @@ $script="    $('#duration').val({$_SESSION['order']['duration']});\n";
       }
     }
     function agree(){
+      
       $('.has-error').removeClass('has-error');
       $('.help-block').hide(300);
+      //window.location.href='payment';
       if ($("#log_me").is(":hidden")) {
-        if ($("#agree").is(":checked")) { window.location.href='payment'; }
+        window.location.href='payment'; 
+        /*
+        if ($("#agree").is(":checked")) { 
+          
+        }
         else { 
           $("#agree").parent().addClass('has-error');
           $('.help-block',$("#agree").parent()).show(600);
-        }
+        }*/
+      }else{
+        alert('Трябва да влезете в системата, за да завършите поръчката!');
       }
     }
+
     $('#number,#building,#gate,#floor,#apartment').on('input', function() { 
       if ($(this).val()=='') { $(this).css('text-transform','none'); }
       else { $(this).css('text-transform','uppercase'); }
     });
+
     $( document ).ready(function() {
 <?php
     echo "      $('#duration').val({$_SESSION['order']['duration']});\n";
+    echo "      $('#kids_count').val({$_SESSION['order']['kids_count']});\n";
     if (isset($_SESSION['order']['step']) && $_SESSION['order']['step']>1) { 
       echo "      next({$_SESSION['order']['step']});\n"; 
     }
@@ -300,6 +389,28 @@ $script="    $('#duration').val({$_SESSION['order']['duration']});\n";
     }
 ?>
     });
+
+//TODO initialize kids list
+/*
+    $( document ).ready(function(initial_count) {
+      console.log($('#kids_count').val());
+      alert($('#kids_count'));
+    $('#kids_data').empty();
+    initial_count = $('#kids_count').val();
+
+    for (var i = 1; i <= 2; i++) {    
+      $('<div class="row">').appendTo('#kids_data');
+        $('<div class="col-sm-1 form-group"> <label class="col-sm-1 control-label">'+ i + '</label>').appendTo('#kids_data');
+        $('<div class="col-sm-1 form-group"> <label class="col-sm-1 control-label">Име</label>').appendTo('#kids_data');
+        $('<div class="col-sm-3 form-group"> <input type="text" name="kid_name[' + i + ']" class="form-control" id="kid_name[' + i + ']""> <span class="help-block pull-right">Напишете име!</span>').appendTo('#kids_data');
+
+        $('<div class="col-sm-1 form-group"> <label class="col-sm-1 control-label">Възраст</label>').appendTo('#kids_data');
+        $('<div class="col-sm-1 form-group"> <input type="text" name="kid_age[' + i + ']" class="form-control" id="kid_age[' + i + ']""> <span class="help-block pull-right">Напишете възраст!</span>').appendTo('#kids_data');
+
+        $('<div class="col-sm-3 form-group"> <input type="radio" name="kid_gender[' + i + ']" id="kid_gender[' + i + ']" value="male">Момче <input type="radio" name="kid_gender[' + i + ']" id="kid_gender[' + i + ']" value="female">Момиче </div> <span class="help-block pull-right">Изберете пол!</span>' ).appendTo('#kids_data');
+    };
+});
+*/
   </script>
 <?php
 //var_dump($_SESSION);
