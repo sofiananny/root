@@ -64,118 +64,169 @@
 $this->output->enable_profiler(TRUE);
 $this->load->helper('form');
 echo "<br/><br/><br/><br/><br/>";
-echo form_open('insert_student');
+echo form_open_multipart('student/insert_student');
 
-	echo "<div class='col-md-6'>";
+	echo "<div class='col-md-6' style='text-align: center;'>";
+	echo form_label('Upload Image:', 'upload');
+	echo "<p style='margin-left: 40%;'>" . form_upload() . "</p>";
+	echo "<br/><br/>";
+	
 	echo form_label('Name&nbsp', 'worker_name');
-	echo form_input('Name', '');
+	echo form_input('worker_name', set_value('worker_name'));
+	echo form_error('worker_name', '<div class="error" style="color: red;">', '</div>');
+	echo "<br/><br/>";
 
 
 	echo form_label('Role&nbsp', 'role');
-	echo form_input('Role', '');
-
-	echo form_label('Email&nbsp', 'worker_email');
-	echo form_input('Email', '');
+	echo form_input('role', 'worker', set_value('role'));
+	echo form_error('role', '<div class="error" style="color: red;">', '</div>');
 	echo "<br/><br/>";
 
-	echo form_label('Password&nbsp', 'pass');
-	echo form_input('pass', '');
+	echo form_label('Email&nbsp', 'worker_email');
+	echo form_input('worker_email', set_value('worker_email'));
+	echo form_error('worker_email', '<div class="error" style="color: red;">', '</div>');
+	echo "<br/><br/>";
+
+	echo form_label('Password&nbsp', 'worker_pass');
+	echo form_input('worker_pass', set_value('worker_pass'));
+	echo form_error('worker_pass', '<div class="error" style="color: red;">', '</div>');
+	echo "<br/><br/>";
 
 	echo form_label('Phone&nbsp', 'phone');
-	echo form_input('Phone', '');
+	echo form_input('phone', set_value('phone'));
+	echo form_error('phone', '<div class="error" style="color: red;">', '</div>');
+	echo "<br/><br/>";
 
 	echo form_label('Date of Birth&nbsp', 'date_of_birth');
-	echo form_input('Date of Birth', '');
+	echo "<input type='date' name='date_of_birth'>";
+	echo form_error('date_of_birth', '<div class="error" style="color: red;">', '</div>');
+	echo "<br/><br/>";
 
-	echo form_label('Sex&nbsp', 'sex');
-	echo form_input('Sex', '');
+	echo form_label('Sex:&nbsp', 'sex');
+	$sex_data=array('name' => 'sex', 'value' => 'male', 'style'=> 'margin: 10px');
+	echo form_label('Male', 'sex');
+	echo form_radio($sex_data, set_value('sex'));
+	$sex_data2=array('name' => 'sex', 'value' => 'female','style'=> 'margin: 10px');
+	echo form_label('Female', 'sex');
+	echo form_radio($sex_data2, set_value('sex'));
+	echo form_error('sex', '<div class="error" style="color: red;">', '</div>');
 	echo "<br/><br/>";
 
 	echo form_label('University&nbsp', 'university');
-	echo form_input('University', '');
-
-	echo form_label('Speciality&nbsp', 'speciality');
-	echo form_input('Speciality', ' ');
-
-	echo form_label('Professional Interest&nbsp', 'prof_interest');
-	echo form_input('Professional Interest', '');
+	echo form_input('university', set_value('university'));
+	echo form_error('university', '<div class="error" style="color: red;">', '</div>');
 	echo "<br/><br/>";
 
-	echo form_label('Smoker&nbsp', 'smoker');
-	echo form_input('Smoker', '');
+	echo form_label('Speciality&nbsp', 'speciality');
+	echo form_input('speciality', set_value('speciality'));
+	echo form_error('speciality', '<div class="error" style="color: red;">', '</div>');
+	echo "<br/><br/>";
+	echo form_label('Professional Interest&nbsp', 'prof_interest');
+	echo form_input('prof_interest', set_value('prof_interest'));
+	echo "<br/><br/>";
+
+	echo form_label('Smoker:&nbsp', 'smoker');
+	$smoker_data=array('name' => 'smoker', 'value' => 'yes', 'style'=> 'margin: 10px');
+	echo form_label('Yes', 'sex');
+	echo form_radio($smoker_data, set_value('smoker'));
+	$smoker_data2=array('name' => 'smoker', 'value' => 'no','style'=> 'margin: 10px');
+	echo form_label('No', 'smoker');
+	echo form_radio($smoker_data2, set_value('smoker'));
+	echo form_error('smoker', '<div class="error" style="color: red;">', '</div>');
+	echo "<br/><br/>";
 
 	echo form_label('Alergies&nbsp', 'alergies');
-	echo form_input('Alergies', '');
+	echo form_input('alergies', set_value('alergies'));
+	echo "<br/><br/>";
 
 	echo form_label('Specific Alergies&nbsp', 'alergies_specific');
-	echo form_input('Specific Alergies', '');
+	echo form_input('alergies_specific', set_value('alergies_specific'));
 	echo "<br/><br/>";
 
 	echo form_label('About&nbsp', 'about');
-	echo form_input('About', '');
+	echo form_input('about', set_value('about'));
+	echo form_error('about', '<div class="error" style="color: red;">', '</div>');
 	echo "<br/><br/>";
 	echo "</div>";
 	echo "<div class='col-md-6'>";
 
 	echo form_label('Interest1&nbsp', 'interests1');
-	echo form_input('Interest1', '');
+	echo form_input('interests1', set_value('interests1'));
+	echo form_error('interests1', '<div class="error" style="color: red;">', '</div>');
+	echo "<br/><br/>";
 
 	echo form_label('Interest2&nbsp', 'interests2');
-	echo form_input('Interest2', '');
+	echo form_input('interests2', set_value('interests2'));
+	echo form_error('interests2', '<div class="error" style="color: red;">', '</div>');
+	echo "<br/><br/>";
+	
 
 	echo form_label('Interest3&nbsp', 'interests3');
-	echo form_input('Interest3', '');
+	echo form_input('interests3', set_value('interests3'));
+	echo form_error('interests3');
+	
 	echo "<br/><br/>";
 
 
 	echo form_label('Interest4&nbsp', 'interests4');
-	echo form_input('Interest4', '');
+	echo form_input('interests4', set_value('interests4'));
+	echo form_error('interests4', '<div class="error" style="color: red;">', '</div>');
+	echo "<br/><br/>";
 	
 	echo form_label('Address from ID card&nbsp', 'idcard_address');
-	echo form_input('Address from ID card', '');
+	echo form_input('idcard_address', set_value('idcard_address'));
+	echo "<br/><br/>";
 
 	echo form_label('Current Address&nbsp', 'current_address');
-	echo form_input('Current Address', '');
+	echo form_input('current_address', set_value('current_address'));
 	echo "<br/><br/>";
 
 
 	echo form_label('Address for Pickup 1&nbsp', 'address1');
-	echo form_input('Address for Pickup 1', '');
+	echo form_input('address1', set_value('address1'));
+	echo form_error('address1', '<div class="error" style="color: red;">', '</div>');
+	echo "<br/><br/>";
 
 	echo form_label('Address for Pickup 2&nbsp', 'address2');
-	echo form_input('Address for Pickup 2', '');
+	echo form_input('address2', set_value('address2'));
+	echo form_error('address2', '<div class="error" style="color: red;">', '</div>');
 	echo "<br/><br/>";
 
 	echo form_label('Name for Emergency contact&nbsp', 'em_contact_name');
-	echo form_input('Name for Emergency contact', '');
+	echo form_input('em_contact_name', set_value('em_contact_name'));
+	echo "<br/><br/>";
 
 
 	echo form_label('Phone of Emergency contact&nbsp', 'em_telephone');
-	echo form_input('Phone of Emergency contact', '');
+	echo form_input('em_telephone', set_value('em_telephone'));
 	echo "<br/><br/>";
 
 	echo form_label('Email of Emergency contact&nbsp', 'em_email');
-	echo form_input('Email of Emergency contact', '');
+	echo form_input('em_email', set_value('em_email'));
+	echo "<br/><br/>";
 
 
 	echo form_label('Connection with Em. Contact&nbsp', 'em_connection');
-	echo form_input('Connection with Em. Contact', '');
+	echo form_input('em_connection', set_value('em_connection'));
 	echo "<br/><br/>";
 
 	echo form_label('Address of Em. Contact&nbsp', 'em_address');
-	echo form_input('Address of Em. Contact', '');
+	echo form_input('em_address', set_value('em_address'));
+	echo "<br/><br/>";
 	
 
 	echo form_label('Average score&nbsp', 'avg_score');
-	echo form_input('Average score', '');
+	echo form_input('avg_score', set_value('avg_score'));
 	echo "<br/><br/>";
 
 	echo form_label('Recommended by&nbsp', 'recommended_by');
-	echo form_input('Recommended by', '');
+	echo form_input('recommended_by', set_value('recommended_by'));
+	echo "<br/><br/>";
 
 	echo form_label('Score from recruitment test&nbsp', 'recruitment_score');
-	echo form_input('Score from recruitment test', '');
-	echo "<form><input Type='button' value='Back' onClick='history.go(-1);return true;''></form> &nbsp";
+	echo form_input('recruitment_score', set_value('recruitment_score'));
+	echo "<br/><br/>";
+	echo "<form><input Type='button' value='Back' onClick='history.go(-1);return true;set_value('')></form> &nbsp";
 	echo form_submit('add_student', 'Add');
 	echo "</div>";
 }

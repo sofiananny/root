@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2015 at 11:30 AM
+-- Generation Time: Nov 26, 2015 at 05:02 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -243,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `workers` (
   `role` varchar(10) NOT NULL,
   `worker_pass` varchar(32) NOT NULL,
   `date_deleted` date DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `workers`
@@ -251,7 +251,8 @@ CREATE TABLE IF NOT EXISTS `workers` (
 
 INSERT INTO `workers` (`worker_id`, `worker_name`, `worker_email`, `role`, `worker_pass`, `date_deleted`) VALUES
 (1, 'Иванка Иванова', 'mail@mail.com', 'worker', '81dc9bdb52d04dc20036dbd8313ed055', NULL),
-(2, 'Михаил Иванчев', 'mivanchev@gmail.com', 'admin', 'ff8b33735675d5146b6e5b3d9affc22c', NULL);
+(2, 'Михаил Иванчев', 'mivanchev@gmail.com', 'admin', 'ff8b33735675d5146b6e5b3d9affc22c', NULL),
+(3, 'asdfasdf', 'm@mail.com', 'worker', '81dc9bdb52d04dc20036dbd8313ed055', NULL);
 
 -- --------------------------------------------------------
 
@@ -286,16 +287,18 @@ CREATE TABLE IF NOT EXISTS `worker_details` (
   `em_address` varchar(100) NOT NULL,
   `avg_score` int(11) NOT NULL,
   `recommended_by` varchar(50) NOT NULL,
-  `recruitment_score` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `recruitment_score` int(11) NOT NULL,
+  `image` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `worker_details`
 --
 
-INSERT INTO `worker_details` (`student_id`, `phone`, `date_of_birth`, `sex`, `university`, `speciality`, `prof_interest`, `smoker`, `alergies`, `alergies_specific`, `about`, `interests1`, `interests2`, `interests3`, `interests4`, `idcard_address`, `current_address`, `address1`, `address2`, `em_contact_name`, `em_telephone`, `em_email`, `em_connection`, `em_address`, `avg_score`, `recommended_by`, `recruitment_score`) VALUES
-(1, 123, '2015-11-11', 'female', 'some', 'some', 'sdfa', 'no', 'no', 'no', 'no', 'asdf', 'asdf', 'asdf', 'asdf', 'asdfasdf', '1234', 'asdfasdf', 'asdfasdf', 'asdfasdf', 5614564, 'asdfasdf', 'sadfasdf', 'asdfasdf', 5, 'asdfasdf', 5),
-(2, 56654, '2015-11-01', 'male', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'yes', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'ffgdg', 'dfgdfg', 'sdfgsdfg', '1234', 'sdfgsdfg', 'dfsdgfsdgf', 'sdfgsdfg', 667987, 'dfsdfg', 'dfgsdfg', 'asDFGAERG', 5, 'dsfgsdfggf', 5);
+INSERT INTO `worker_details` (`student_id`, `phone`, `date_of_birth`, `sex`, `university`, `speciality`, `prof_interest`, `smoker`, `alergies`, `alergies_specific`, `about`, `interests1`, `interests2`, `interests3`, `interests4`, `idcard_address`, `current_address`, `address1`, `address2`, `em_contact_name`, `em_telephone`, `em_email`, `em_connection`, `em_address`, `avg_score`, `recommended_by`, `recruitment_score`, `image`) VALUES
+(1, 123, '2015-11-11', 'female', 'some', 'some', 'sdfa', 'no', 'no', 'no', 'no', 'asdf', 'asdf', 'asdf', 'asdf', 'asdfasdf', '1234', 'asdfasdf', 'asdfasdf', 'asdfasdf', 5614564, 'asdfasdf', 'sadfasdf', 'asdfasdf', 5, 'asdfasdf', 5, ''),
+(2, 56654, '2015-11-01', 'male', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'yes', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'ffgdg', 'dfgdfg', 'sdfgsdfg', '1234', 'sdfgsdfg', 'dfsdgfsdgf', 'sdfgsdfg', 667987, 'dfsdfg', 'dfgsdfg', 'asDFGAERG', 5, 'dsfgsdfggf', 5, ''),
+(3, 1234, '2015-11-19', 'male', 'asdfasdf', ' asdfasdf', '', 'yes', 'asdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'sdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 251564, 'asdfasdf', 'asdfasdf', 'asdfasdf', 2, 'asdfasdf', 2, '');
 
 --
 -- Indexes for dumped tables
@@ -349,12 +352,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `workers`
 --
 ALTER TABLE `workers`
-  MODIFY `worker_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `worker_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `worker_details`
 --
 ALTER TABLE `worker_details`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --
