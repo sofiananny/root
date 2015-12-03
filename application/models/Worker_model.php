@@ -6,6 +6,7 @@
  */
 class Worker_model extends CI_Model{
   function login_worker(){
+    
     $where=array(
       'worker_email'=>$this->input->post('email'),
       'worker_pass'=>md5(trim($this->input->post('pass')))
@@ -31,7 +32,6 @@ class Worker_model extends CI_Model{
     }
     return false;
   }
-
   function get_all_nannies()
   {
     $q = $this->db->get('workers');
