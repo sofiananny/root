@@ -25,13 +25,14 @@ class Order_model extends CI_Model {
     $date_arr[0] = $date_arr[1];
     $date_arr[1] = $tmp;
     $date2 = implode('/', $date_arr);
-    
+
     $date = date_create($date2);
     $order_date = date_format($date, 'Y-m-d');
 
     $data = array(
       'parent_id' => 1//TODO
       ,'city' => $_SESSION['order']['city']
+      ,'district_id' => $_SESSION['order']['district']
       ,'street' => $_SESSION['order']['street']
       ,'street_number' => $_SESSION['order']['number']
       ,'building' => $_SESSION['order']['building']
