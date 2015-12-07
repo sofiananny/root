@@ -29,6 +29,7 @@
       <div class="small-header-wrap">
         <div id="top_r" class="pull-right" style="position: relative">
 <?php 
+  if (!isset($_SESSION['userid'])) { //Не е логнат потребител ******************
     echo "          <a id=\"enter\" class=\"btn btn-login fw\" data-toggle=\"modal\" data-target=\"#nannyLoginModal\"";
     echo " onclick=\"showLogin('login-div')\">вход</a>\n";
   }
