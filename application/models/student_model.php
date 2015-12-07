@@ -6,6 +6,7 @@ class student_model extends CI_Model{
      {
 		$this->db->from('workers');
 		$this->db->join('worker_details', 'worker_details.student_id = workers.worker_id');
+        $this->db->order_by('worker_name', 'asc');
         $this->db->where('role','worker');
         $this->db->where('date_deleted', NULL);
         $q = $this->db->get();

@@ -31,7 +31,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
      {  
         $this->load->model('student_model');
         $this->student_model->update_student();
-        //redirect('student');
+        redirect('student');
      }
     public function add_student()
     {
@@ -78,7 +78,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     }
     public function do_upload()
         {
-                $config['upload_path']          = './uploads/';
+                $config['upload_path']          = '../uploads/';
                 $config['allowed_types']        = 'gif|jpg|jpeg|png';
                 $config['max_size']             = 500;
                 $config['max_width']            = 1024;

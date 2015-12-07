@@ -14,20 +14,15 @@ class Login extends CI_Controller {
         if ($this->users_model->isExsistUser()) {
           $response['success']=true;
           $response['top_r']=<<<TOP_R
-          <a id='to_order' class="btn btn-order fw" onclick="window.location.href='order'">поръчай</a>
-          <div class="dropdown pull-right">
-            <button class="btn btn-login fw dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" 
-                    aria-expanded="true">профил <span class="caret"></span></button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="top: 60px; left: auto; right: 0;">
-              <li>
-                <a href="account">
-                  <span class="glyphicon glyphicon-user to_account_g"></span>
-                  <span id="usr_names">{$_SESSION['username']}</span>
-                </a>
-              </li>
-              <li><a href="javascript: void(0)"  onclick="json_sbm('login/logout','')">Изход</a></li>
-           </ul>
-         </div>
+          <a id='to_order' class='btn btn-order fw' onclick="window.location.href='order'">поръчай</a>
+ <div class='dropdown pull-left'>
+  <a class='dropdown-toggle' type='button' data-toggle='dropdown'><span class='glyphicon glyphicon-user to_account_g'></span>$_SESSION[username]
+  <span class='caret'></span></a>
+  <ul id='profile' class='dropdown-menu'>
+    <li><a href='account'><span id='usr_names'>профил</span></a></li>
+    <li> <a href='login/logout'>изход</a></li>
+  </ul>
+  </div>
 TOP_R;
         }
         else { $errors[]='no_user'; }
@@ -44,6 +39,7 @@ TOP_R;
     $response['success']=true;
     header('Content-Type: application/json');
     echo json_encode($response);
+    redirect('');
   }
   function forgot_password(){
     $response['success']=false;
@@ -83,13 +79,12 @@ TOP_R;
         $response['top_r']=<<<TOP_R
           <a id='to_order' class="btn btn-order fw" onclick="window.location.href='order'">поръчай</a>
           <div class="dropdown pull-right">
-            <button class="btn btn-login fw dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" 
-                    aria-expanded="true">профил <span class="caret"></span></button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="top: 60px; left: auto; right: 0;">
+            <button class="btn btn-login fw dropdown-toggle" type="button" data-toggle="dropdown">профил <span class="caret"></span></button>
+            <ul class="dropdown-menu" style="top: 60px; left: auto; right: 0;">
               <li>
                 <a href="account">
                   <span class="glyphicon glyphicon-user to_account_g"></span>
-                  <span id="usr_names">{$_SESSION['username']}</span>
+                  <span id='usr_names'>{$_SESSION['username']}</span>
                 </a>
               </li>
               <li><a href="javascript: void(0)"  onclick="json_sbm('login/logout','')">Изход</a></li>

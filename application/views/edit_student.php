@@ -142,7 +142,7 @@ echo form_open_multipart('student/update_student', '', $hidden);
 	
 
 	echo form_label('Interest3&nbsp', 'interests3');
-	echo form_label('Interest3&nbsp', 'interests3');
+	echo form_input('interests3', $one_student['interests3']);
 	echo form_error('interests3', '<div class="error" style="color: red;">', '</div>');
 	
 	echo "<br/><br/>";
