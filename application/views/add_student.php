@@ -225,7 +225,7 @@ echo form_open_multipart('student/insert_student');
 	echo form_label('Score from recruitment test&nbsp', 'recruitment_score');
 	echo form_input('recruitment_score', set_value('recruitment_score'));
 	echo "<br/><br/>";
-	echo form_submit('add_student', 'Add');
+	echo form_submit('add_student', 'Add','class="btn btn-success"');
 	echo "<br/><br/>";
 	echo anchor("student", 'Back', array('class' => 'btn btn-info', 'role'=>'button'));
 	echo "</div>";

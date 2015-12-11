@@ -63,17 +63,17 @@
 
 <?php
 echo "<br/><br/><br/><br/><br/><div class='col-lg-12' style='text-align: center'><table class='table table-striped table-responsive' border 1 px black>
-<tr><td>ID</td>
-<td>Name</td>
-<td>Role</td>
-<td>Email</td>
-<td>Sex</td>
-<td>Phone Number</td>
-<td>Date of Birth</td>
-<td>University</td>
-<td>Speciality</td>
-<td>Professional interests</td>
-<td>Smoker?</td></tr>";
+<tr><th>ID</th>
+<th>Name</th>
+<th>Role</th>
+<th>Email</th>
+<th>Sex</th>
+<th>Phone Number</th>
+<th>Date of Birth</th>
+<th>University</th>
+<th>Speciality</th>
+<th>Professional interests</th>
+<th>Smoker?</th></tr>";
 	echo "<tr><td> $one_student[worker_id]</td>
 	<td> $one_student[worker_name]</td>
 	<td> $one_student[role]</td>
@@ -87,15 +87,15 @@ echo "<br/><br/><br/><br/><br/><div class='col-lg-12' style='text-align: center'
 	<td> $one_student[smoker]</td></tr>";
 echo "</table>";
 echo "<div class='col-lg-12' style='text-align: center'><table class='table table-striped table-responsive' border 1 px black>
-<tr><td>Alergies</td>
-<td>Specific alergies</td>
-<td>About student</td>
-<td>Interest 1</td>
-<td>Interest 2</td>
-<td>Interest 3</td>
-<td>Interest 4</td>
-<td>Address from ID</td>
-<td>Current address</td></tr>";
+<tr><th>Alergies</th>
+<th>Specific alergies</th>
+<th>About student</th>
+<th>Interest 1</th>
+<th>Interest 2</th>
+<th>Interest 3</th>
+<th>Interest 4</th>
+<th>Address from ID</th>
+<th>Current address</th></tr>";
 	echo "<tr>
 	<td> $one_student[alergies]</td>
 	<td> $one_student[alergies_specific]</td>
@@ -107,15 +107,15 @@ echo "<div class='col-lg-12' style='text-align: center'><table class='table tabl
 	<td> $one_student[idcard_address]</td>
 	<td> $one_student[current_address]</td></tr></table>";
 echo "<div class='col-lg-12' style='text-align: center'><table class='table table-striped table-responsive' border 1 px black><tr><td>1st address for pickup</td>
-<td>2nd address for pickup</td>
-<td>Emergency contact names</td>
-<td>Emergency contact phone</td>
-<td>Emergency contact email</td>
-<td>Emergency contact connection (relativce, friend etc.)</td>
-<td>Emergency contact address</td>
-<td>Average score in school</td>
-<td>Recommended by</td>
-<td>Recruitment test score</td>
+<th>2nd address for pickup</th>
+<th>Emergency contact names</th>
+<th>Emergency contact phone</th>
+<th>Emergency contact email</th>
+<th>Emergency contact connection (relativce, friend etc.)</th>
+<th>Emergency contact address</th>
+<th>Average score in school</th>
+<th>Recommended by</th>
+<th>Recruitment test score</th>
 </tr>";
 	echo "<tr>
 	<td> $one_student[address1]</td>
