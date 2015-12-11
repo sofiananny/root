@@ -102,7 +102,7 @@ function prep_month($ym,&$periods){
     return h[0]*2+h[1]/30;
   }
   function last_td(){
-    var end=$('.selected td:eq('+col+')').find("input").val().slice(-5).split(":");
+    var end=$('.selected td:eq('+col+')').find("input").val().slice(8, 12).split(":");
     return end[0]*2+end[1]/30;
   }
   function remove_period(n){

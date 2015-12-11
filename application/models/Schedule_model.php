@@ -19,7 +19,8 @@ class Schedule_model extends CI_Model {
     $query=$this->db->get('schedules');
 
     $periods=array();
-    foreach ($query->result_array() as $row){
+    $arr = $query->result_array();
+    foreach ($arr as $row){
       $periods['address_'.$row['schedule_date']] = $row['address'];
       $periods["begin_".$row['schedule_date']."_".substr($row['begin_hour'],0,5)]=
                ((strtotime($row['end_hour'])-strtotime($row['begin_hour']))/1800)."_".
