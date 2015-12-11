@@ -61,12 +61,17 @@ echo "<div class='col-xs-6' style='text-align: center'>";
 $hidden = array('worker_id' => "$_GET[id]", 'student_id' => "$_GET[id]");
 echo "<br/><br/><br/><br/><br/>";
 echo form_open_multipart('student/update_student', '', $hidden);
-	
-	echo "<div class='col-md-6' style='text-align: center;'>";
-	echo form_label('Upload Image:', 'upload');
+
+	echo form_label('Current Image:', 'image');
+	echo "<br/>";
+	echo "<img src='../uploads/". $one_student['image'] . "'  alt='avatar' style='width:200px; height:250px;'>";
+	echo "<br/><br/>";
+
+	echo form_label('Upload New Image:', 'upload');
 	echo "<p style='margin-left: 40%;'>" . form_upload() . "</p>";
 	echo "<br/><br/>";
-	
+
+
 	echo form_label('Name&nbsp', 'worker_name');
 	echo form_input('worker_name', $one_student['worker_name']);
 	echo "<br/><br/>";
@@ -206,7 +211,7 @@ echo form_open_multipart('student/update_student', '', $hidden);
 	echo form_label('Score from recruitment test&nbsp', 'recruitment_score');
 	echo form_input('recruitment_score', $one_student['recruitment_score']);
 	echo "<br/><br/>";
-	echo form_submit('ed_student', 'Update') . "<br/><br/>";
+	echo form_submit('ed_student', 'Update', 'class="btn btn-success"') . "<br/><br/>";
 	echo anchor("student", 'Back', array('class' => 'btn btn-info', 'role'=>'button'));
 	echo form_close();
 	echo "</div>";
