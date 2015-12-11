@@ -7,29 +7,44 @@
 class Schedule extends CI_Controller {
   function index(){
     $_SESSION['menu']=2;
-    if (!isset($_SESSION['worker_id'])){ $this->load->view('worker_login_view'); }
+    if (!isset($_SESSION['worker_id']))
+    { 
+      $this->load->view('worker_login_view'); 
+    }
     else {
       $this->load->model('schedule_model');
-      $periods=$this->schedule_model->read_periods(array('worker_id'=>$_SESSION['worker_id'],
-                                                         'schedule_date >='=>date('Y-m').'-01'));
-      $this->load->view('worker_schedule_view',array('ym'=>date('Y-m'),
-                                                     'periods'=>$periods));
+      $this->load->model('worker_model');
+      $data['periods']=$this->schedule_model->read_periods();
+      $data['addresses'] = $this->worker_model->get_all_addresses_by_nanny($_SESSION['worker_id']);
+      $data['ym'] = date('Y-m');
+      $this->load->view('worker_schedule_view', $data);
     }
   }
+
   function save(){
     function prep_month($ym,$periods,&$l,&$db_data){
       foreach ($periods as $key=>$value){
         if ("$ym".str_pad($key,2,"0",STR_PAD_LEFT)>$l){
           foreach ($value as $period){
             $hour=explode(' ',$period);
+            //form the address
+            $address = '';
+            for($i = 3; $i<=count($hour); $i++)
+            {
+              $address .= $hour[$i] . ' ';
+            }
+
             $db_data[]=array('worker_id'=>$_SESSION['worker_id'],
                              'schedule_date'=>"$ym".str_pad($key,2,"0",STR_PAD_LEFT),
                              'begin_hour'=>$hour[0],
-                             'end_hour'=>$hour[2]);
+                             'end_hour'=>$hour[2],
+                             'address'=> $address);
           }
         }
       }
     }
+
+    print_r($_POST['current_month']);
     $db_data=array();
     $l=date('Y-m-d',strtotime(date('Y-m-d')." +1 day"));
     if (isset($_POST['current_month'])){ // Периоди за текущ месец -------------

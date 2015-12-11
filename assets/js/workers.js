@@ -1,8 +1,8 @@
 function json_sbm(url,data){
   $('.has-error').removeClass('has-error');
   $('.help-block,#email_busy,#no_user').hide(300);
-//  alert(url);
-//  alert(data);
+  alert(url);
+  alert(data.toString());
   $.ajax({
     type : "POST",
     dataType:'json',

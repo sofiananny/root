@@ -37,5 +37,13 @@ class Worker_model extends CI_Model{
     $q = $this->db->get('workers');
     return $q->result_array();
   }
+
+  function get_all_addresses_by_nanny($nanny_id)
+  {
+    $this->db->select('address1, address2');
+    $this->db->where('student_id', $nanny_id);
+    $q = $this->db->get('worker_details');
+    return $q->row_array();
+  }
 }
 

@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/worker.css">
   <link rel="stylesheet" type="text/css" href="http:////cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css"> <!--datatables-->
   <script type="text/javascript" charset="utf8" src="http:////cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script><!--datatables-->
+  <script type="text/javascript" src="<?php echo base_url();?>assets/js/md5.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top">

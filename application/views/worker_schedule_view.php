@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->view('worker_templates/wheader');
-$this->output->enable_profiler(TRUE);
 $month=array('','Януари','Февруари','Март','Април','Май','Юни','Юли','Август','Септември','Октомври','Ноември','Декември');
 function prep_month($ym,&$periods){
   $week=array('Нд','Пн','Вт','Ср','Чт','Пт','Сб');
@@ -21,7 +20,8 @@ function prep_month($ym,&$periods){
       if (isset($periods["begin_".$ym."-".str_pad($i,2,"0",STR_PAD_LEFT)."_".$tit])) { 
         $class=' class="on"';
         $val=explode('_',$periods["begin_".$ym."-".str_pad($i,2,"0",STR_PAD_LEFT)."_".$tit]);
-        $input='<input type="text" readonly style="width: '.($val[0]*21).'px" value="'.$val[1].'"/>';
+        $val[2] = $periods['address_'.$ym."-".str_pad($i,2,"0",STR_PAD_LEFT)];
+        $input='<input type="text" readonly style="width: '.($val[0]*21).'px" value="'.$val[1]. ' ' .$val[2].'"/>';
         $tit='';
       }
       if (isset($periods["end_".$ym."-".str_pad($i,2,"0",STR_PAD_LEFT)."_".$tit])) { $class=''; }
@@ -54,10 +54,10 @@ function prep_month($ym,&$periods){
     </div>
     <form id="schedule_months" action="schedule/save">
       <table id="s1" class='schedule'>
-<?php prep_month($ym,$periods); ?>
+        <?php prep_month($ym,$periods); ?>
       </table>
       <table id="s2" class='schedule' style="display: none;">
-<?php prep_month(date('Y-m',strtotime($ym."-01 +1month")),$periods); ?>
+        <?php prep_month(date('Y-m',strtotime($ym."-01 +1month")),$periods); ?>
       </table>
     </form>
     <table class="sch_tit" style="border-top: 1px solid #000; margin-top: 1px;">
@@ -77,6 +77,13 @@ function prep_month($ym,&$periods){
     <div class="title"><img alt="close" src="<?php echo base_url(); ?>assets/img/close.gif" onclick="close_div()"/></div>
     <center style="padding: 10px;">
       <p id="start" style="width: 100%; font-weight: bold"></p>
+      <select name="address" id="address">
+        <?php
+            echo "<option value='$addresses[address1]'> $addresses[address1] </option>";
+            echo "<option value='$addresses[address2]'> $addresses[address2] </option>";
+        ?>
+      </select>
+      <br/>
       <select id="selector" size="8" style="width: 100%;"></select><br/>
       <button id="clr" style="margin-top: 5px;">Изтрии периода</button>
     </center>
@@ -110,6 +117,8 @@ function prep_month($ym,&$periods){
     $('.selected').removeClass('selected');
     $('#div-sel').hide();
   }
+
+  //TODO - make it close div on on selecting address
   $(".schedule td").click(function(){
     close_div();
     $(this).parent().addClass('selected');
@@ -128,19 +137,32 @@ function prep_month($ym,&$periods){
           col=$(this).index();
           $('#start').html('от '+td_hour(col-1)+' ч.');
           for (var i=col+7; i<49; i++){
-            if (i % 2) { cls='class="half"'; } else { cls=''; }
+            if (i % 2) { 
+              cls='class="half"'; 
+            } else { 
+              cls=''; 
+            }
             html += '<option value="'+i+'"'+cls+'>до '+td_hour(i)+' ч.</option>';
           }
           $('#selector').html(html);
-          if ($(this).parent().index()<15) { $('#div-sel').css('top',$(this).offset().top); }
-          else { $('#div-sel').css('top',$(this).offset().top-215); }
-          if ($(this).index()<25) { $('#div-sel').css('left',$(this).offset().left); }
-          else { $('#div-sel').css('left',$(this).offset().left-128); }
+          if ($(this).parent().index()<15) { 
+            $('#div-sel').css('top',$(this).offset().top); 
+          }
+          else { 
+            $('#div-sel').css('top',$(this).offset().top-215); 
+          }
+          if ($(this).index()<25) { 
+            $('#div-sel').css('left',$(this).offset().left); 
+          }
+          else { 
+            $('#div-sel').css('left',$(this).offset().left-128); 
+          }
           $('#div-sel').show();
         }
       }
     }
   });
+
   $('#selector').on('change', function() {
     var i,j,k=0,end=0,last=parseInt($('#selector').val());
     if ($('.selected td:eq('+col+')').hasClass('on')) { end=last_td(); }
@@ -154,22 +176,29 @@ function prep_month($ym,&$periods){
       }
     }
     if (end>=i) {
-      for (j=i; j<=end; j++) { $('.selected td:eq('+j+')').removeClass('on'); }
+      for (j=i; j<=end; j++) { 
+        $('.selected td:eq('+j+')').removeClass('on'); 
+      }
     }
-    $('.selected td:eq('+col+')').html('<input type="text" readonly style="width: '+(k*21)+'px" value="'+td_hour(col-1)+' ÷ '+td_hour(col+k-1)+'"/>');
+    $('.selected td:eq('+col+')').html('<input type="text" readonly style="width: '+(k*21)+'px" value="'+td_hour(col-1)+' ÷ '+td_hour(col+k-1)+ ' ' + $('#address').val() +  '"/>');
     $('.selected td:eq('+col+')').attr('title','');
     close_div();
   });
+
   $('#clr').click(function(){
     if ($('.selected td:eq('+col+')').hasClass('on')) {
-      for (var i=col; i<=last_td(); i++){ $('.selected td:eq('+i+')').removeClass('on'); }
+      for (var i=col; i<=last_td(); i++){ 
+        $('.selected td:eq('+i+')').removeClass('on'); 
+      }
       $('.selected td:eq('+col+')').html('').attr('title',td_hour(col-1));
     }
     close_div();
   });
+
   $('#save').click(function(){
     $("#s1 :input").each(function(){ $(this).attr('name','current_month['+($(this).parent().parent().index()+1)+'][]'); });
     $("#s2 :input").each(function(){ $(this).attr('name','next_month['+($(this).parent().parent().index()+1)+'][]'); });
+    $("#address :input").each(function(){ $(this).attr('name','next_month['+($(this).parent().parent().index()+1)+'][]'); });
     json_sbm($('#schedule_months').attr("action"),$('#schedule_months').serialize());
     return false;
   });

@@ -314,6 +314,7 @@ $url=base_url().'assets/img';
         dynamic: false
       });
      });
+
     function next(step){
       $(window).scrollTop(0);
       $('#cyrillic').hide(300);
@@ -329,6 +330,7 @@ $url=base_url().'assets/img';
         show_nannies_count_title();
       }
     }
+
     function show_step(step,order_prop,pay_prop){
       if (!$(".wizard a:nth-child("+step+")" ).hasClass("current")) {
         $('.step').hide(600);
@@ -353,6 +355,7 @@ $url=base_url().'assets/img';
         }
       }
     }
+    
     function agree(){
       
       $('.has-error').removeClass('has-error');
