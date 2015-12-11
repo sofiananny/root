@@ -78,7 +78,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     }
     public function do_upload()
         {
-                $config['upload_path']          = '../uploads/';
+                $config['upload_path']          = './uploads/';
                 $config['allowed_types']        = 'gif|jpg|jpeg|png';
                 $config['max_size']             = 500;
                 $config['max_width']            = 1024;
@@ -90,13 +90,13 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 {
                         $error = array('error' => $this->upload->display_errors());
 
-                        $this->load->view('upload_form', $error);
+                        $this->load->view('edit_student', $error);
                 }
                 else
                 {
                         $data = array('upload_data' => $this->upload->data());
 
-                        $this->load->view('upload_success', $data);
+                        $this->load->view('', $data);
                 }
         }
 }

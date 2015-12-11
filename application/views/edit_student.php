@@ -61,10 +61,15 @@ echo "<div class='col-xs-6' style='text-align: center'>";
 $hidden = array('worker_id' => "$_GET[id]", 'student_id' => "$_GET[id]");
 echo "<br/><br/><br/><br/><br/>";
 echo form_open_multipart('student/update_student', '', $hidden);
-	
-	/*echo form_label('Upload Image:', 'upload');
+
+	echo form_label('Current Image:', 'image');
+	echo "<br/>";
+	echo "<img src='../uploads/". $one_student['image'] . "'  alt='avatar' style='width:200px; height:250px;'>";
+	echo "<br/><br/>";
+
+	echo form_label('Upload New Image:', 'upload');
 	echo "<p style='margin-left: 40%;'>" . form_upload() . "</p>";
-	echo "<br/><br/>";*/
+	echo "<br/><br/>";
 
 
 	echo form_label('Name&nbsp', 'worker_name');

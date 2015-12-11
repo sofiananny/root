@@ -62,7 +62,10 @@
 } );</script>
 
 <?php
-echo "<br/><br/><br/><br/><br/><div class='col-lg-12' style='text-align: center'><table class='table table-striped table-responsive' border 1 px black>
+echo "<br/><br/><br/><br/><br/><div class='col-lg-12' style='text-align: center'>
+<img src='../uploads/". $one_student['image'] . "'  alt='avatar' style='width:200px; height:250px;'>
+<br/><br/>
+<table class='table table-striped table-responsive' border 1 px black>
 <tr><th>ID</th>
 <th>Name</th>
 <th>Role</th>
