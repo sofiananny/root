@@ -68,7 +68,7 @@ echo form_open_multipart('student/update_student', '', $hidden);
 	echo "<br/><br/>";
 
 	echo form_label('Upload New Image:', 'upload');
-	echo "<p style='margin-left: 40%;'>" . form_upload() . "</p>";
+	echo "<p style='margin-left: 40%;'>" . form_upload('upload') . "</p>";
 	echo "<br/><br/>";
 
 
@@ -215,6 +215,8 @@ echo form_open_multipart('student/update_student', '', $hidden);
 	echo anchor("student", 'Back', array('class' => 'btn btn-info', 'role'=>'button'));
 	echo form_close();
 	echo "</div>";
+
+	print_r($error);
 	
 ?>
   <div id="footer">

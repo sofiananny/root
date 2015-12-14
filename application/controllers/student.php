@@ -31,10 +31,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
      {  
         $this->load->model('student_model');
         $this->student_model->update_student();
+        $this->do_upload();
         redirect('student');
      }
     public function add_student()
     {
+        $this->load->library('upload');
         $this->load->helper('file');
         $this->load->helper('form');
         $this->load->library('form_validation');
@@ -43,9 +45,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     public function insert_student()
     {
         $this->load->helper('file');
+        $this->load->library('upload');
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('worker_name', 'Name', 'required');
+        $this->form_validation->set_rules('worker_name', 'Name', 'required|trim|clean_xss');
         $this->form_validation->set_rules('worker_email', 'E-Mail', 'required');
         $this->form_validation->set_rules('worker_pass', 'Password', 'required');
         $this->form_validation->set_rules('role', 'Worker Role', 'required');
@@ -80,23 +83,21 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         {
                 $config['upload_path']          = './uploads/';
                 $config['allowed_types']        = 'gif|jpg|jpeg|png';
-                $config['max_size']             = 500;
-                $config['max_width']            = 1024;
-                $config['max_height']           = 768;
+                //$config['max_size']             = 500;
+                //$config['max_width']            = 1024;
+                //$config['max_height']           = 768;
 
                 $this->load->library('upload', $config);
 
-                if ( ! $this->upload->do_upload('userfile'))
+                if ( ! $this->upload->do_upload('upload'))
                 {
-                        $error = array('error' => $this->upload->display_errors());
-
-                        $this->load->view('edit_student', $error);
+                         $error = array('error' => $this->upload->display_errors());
+                         print_r($error);
+                         //$this->load->view('edit_student', $error);
                 }
                 else
                 {
                         $data = array('upload_data' => $this->upload->data());
-
-                        $this->load->view('', $data);
                 }
         }
 }

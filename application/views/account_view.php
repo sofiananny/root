@@ -67,8 +67,6 @@ $this->load->view('templates/header');
           <button type="submit" id="save_change" class="btn btn-login fw btn-lg">Промени паролата</button>
         </form>
       </div>
-      <br/>
-        <a class="btn btn-login fw" onclick="json_sbm('login/logout','')">изход</a>
     </div>
   </div>
 <?php
