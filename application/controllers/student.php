@@ -29,9 +29,37 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
      }
      public function update_student()
      {  
-        $this->load->model('student_model');
-        $this->student_model->update_student();
-        redirect('student');
+        $this->load->helper('file');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
+        $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
+        $this->form_validation->set_rules('worker_email', 'E-Mail', 'trim|required');
+        $this->form_validation->set_rules('worker_pass', 'Password', 'trim|required');
+        $this->form_validation->set_rules('role', 'Worker Role', 'trim|required');
+        $this->form_validation->set_rules('sex', 'Sex', 'trim|required');
+        $this->form_validation->set_rules('phone', 'Phone', 'trim|required|is_natural');
+        $this->form_validation->set_rules('university', 'University', 'trim|required');
+        $this->form_validation->set_rules('speciality', 'Speciality', 'trim|required');
+        $this->form_validation->set_rules('smoker', 'Smoker', 'trim|required');
+        $this->form_validation->set_rules('about', 'About', 'trim|required');
+        $this->form_validation->set_rules('interests1', 'Interest 1', 'required');
+        $this->form_validation->set_rules('interests2', 'Interest 2', 'required');
+        $this->form_validation->set_rules('interests3', 'Interest 3', 'required');
+        $this->form_validation->set_rules('interests4', 'Interest 4', 'required');
+        $this->form_validation->set_rules('address1', 'Address for pickup 1', 'required');
+        $this->form_validation->set_rules('address2', 'Address for pickup 2', 'required');
+        if ($this->form_validation->run() == FALSE)
+                {
+                        $this->load->view('edit_student');
+                }
+                else
+                {
+                    $this->load->model('student_model');
+                    $this->student_model->update_student();
+                    //redirect('student'); 
+                }
+       
      }
     public function add_student()
     {
@@ -45,15 +73,17 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         $this->load->helper('file');
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('worker_name', 'Name', 'required');
-        $this->form_validation->set_rules('worker_email', 'E-Mail', 'required');
-        $this->form_validation->set_rules('worker_pass', 'Password', 'required');
-        $this->form_validation->set_rules('role', 'Worker Role', 'required');
-        $this->form_validation->set_rules('sex', 'Sex', 'required');
-        $this->form_validation->set_rules('university', 'University', 'required');
-        $this->form_validation->set_rules('speciality', 'Speciality', 'required');
-        $this->form_validation->set_rules('smoker', 'Smoker', 'required');
-        $this->form_validation->set_rules('about', 'About', 'required');
+        $this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
+        $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
+        $this->form_validation->set_rules('worker_email', 'E-Mail', 'trim|required');
+        $this->form_validation->set_rules('worker_pass', 'Password', 'trim|required');
+        $this->form_validation->set_rules('role', 'Worker Role', 'trim|required');
+        $this->form_validation->set_rules('sex', 'Sex', 'trim|required');
+        $this->form_validation->set_rules('phone', 'Phone', 'trim|required|is_natural');
+        $this->form_validation->set_rules('university', 'University', 'trim|required');
+        $this->form_validation->set_rules('speciality', 'Speciality', 'trim|required');
+        $this->form_validation->set_rules('smoker', 'Smoker', 'trim|required');
+        $this->form_validation->set_rules('about', 'About', 'trim|required');
         $this->form_validation->set_rules('interests1', 'Interest 1', 'required');
         $this->form_validation->set_rules('interests2', 'Interest 2', 'required');
         $this->form_validation->set_rules('interests3', 'Interest 3', 'required');

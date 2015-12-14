@@ -169,7 +169,7 @@ $url=base_url().'assets/img';
                     <?php
                       foreach ($all_nanies_list as $value) {
                         echo "<div class='col-sm-11'>
-                          $value[worker_name] 
+                          $value[first_name]  $value[last_name]
                           <input type='radio' name='nanny_id1' value='$value[worker_id]'/>
                          
                         </div><hr/>";
@@ -184,7 +184,7 @@ $url=base_url().'assets/img';
                     <?php
                       foreach ($all_nanies_list as $value) {
                         echo "<div class='col-sm-11'>
-                          $value[worker_name] 
+                          $value[first_name]  $value[last_name]
                           <input type='radio' name='nanny_id2' value='$value[worker_id]'/>
 
                         </div><hr/>";

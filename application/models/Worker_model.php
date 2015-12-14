@@ -14,7 +14,7 @@ class Worker_model extends CI_Model{
     $query=$this->db->get_where('workers',$where);
     if ($query->num_rows()) {
       $_SESSION['worker_id']=$query->row()->worker_id;
-      $_SESSION['worker_name']=$query->row()->worker_name;
+      $_SESSION['first_name']=$query->row()->first_name;
       $_SESSION['role']=$query->row()->role;
       return true;
     }

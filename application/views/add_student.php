@@ -70,9 +70,14 @@ echo form_open_multipart('student/insert_student');
 	echo "<p style='margin-left: 40%;'>" . form_upload() . "</p>";
 	echo "<br/><br/>";
 	
-	echo form_label('Name&nbsp', 'worker_name');
-	echo form_input('worker_name', set_value('worker_name'));
-	echo form_error('worker_name', '<div class="error" style="color: red;">', '</div>');
+	echo form_label('First Name&nbsp', 'first_name');
+	echo form_input('first_name', set_value('first_name'));
+	echo form_error('first_name', '<div class="error" style="color: red;">', '</div>');
+	echo "<br/><br/>";
+
+	echo form_label('Last Name&nbsp', 'last_name');
+	echo form_input('last_name', set_value('last_name'));
+	echo form_error('last_name', '<div class="error" style="color: red;">', '</div>');
 	echo "<br/><br/>";
 
 

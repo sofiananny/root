@@ -67,7 +67,8 @@ echo "<br/><br/><br/><br/><br/><div class='col-lg-12' style='text-align: center'
 <br/><br/>
 <table class='table table-striped table-responsive' border 1 px black>
 <tr><th>ID</th>
-<th>Name</th>
+<th>First Name</th>
+<th>Last Name</th>
 <th>Role</th>
 <th>Email</th>
 <th>Sex</th>
@@ -78,7 +79,8 @@ echo "<br/><br/><br/><br/><br/><div class='col-lg-12' style='text-align: center'
 <th>Professional interests</th>
 <th>Smoker?</th></tr>";
 	echo "<tr><td> $one_student[worker_id]</td>
-	<td> $one_student[worker_name]</td>
+	<td> $one_student[first_name]</td>
+  <td> $one_student[last_name]</td>
 	<td> $one_student[role]</td>
   <td> $one_student[worker_email]</td>
 	<td> $one_student[sex]</td>

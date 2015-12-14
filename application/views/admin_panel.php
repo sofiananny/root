@@ -78,7 +78,7 @@ echo '<br/><br/><br/><br/><br/>';
 	foreach ($all_students as $key => $value)
 	{
 		echo "<tr><td> $num</td>";
-		echo "<td> $value[worker_name]</td>";
+		echo "<td> $value[first_name] $value[last_name]</td>";
 		echo "<td>" . anchor("student/view_student?id=$value[worker_id]", 'View', array('class' => 'btn btn-info', 'id'=> $value['worker_id'], 'role'=>'button')) . "</td>";
 		echo "<td>" . anchor("student/edit_student?id=$value[worker_id]", 'Edit', array('class' => 'btn btn-primary', 'id'=> $value['worker_id'], 'role'=>'button')) . "</td>";
 		echo "</tr>";

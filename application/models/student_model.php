@@ -6,7 +6,7 @@ class student_model extends CI_Model{
      {
 		$this->db->from('workers');
 		$this->db->join('worker_details', 'worker_details.student_id = workers.worker_id');
-        $this->db->order_by('worker_name', 'asc');
+        $this->db->order_by('first_name', 'asc');
         $this->db->where('role','worker');
         $this->db->where('date_deleted', NULL);
         $q = $this->db->get();
@@ -31,7 +31,8 @@ class student_model extends CI_Model{
      {
         $id = $this->input->post('worker_id');
         $data = array(
-        'worker_name' => $this->input->post('worker_name'),
+        'first_name' => $this->input->post('first_name'),
+        'last_name' => $this->input->post('last_name'),
         'worker_email' => $this->input->post('worker_email'),
         'role' => $this->input->post('role'));
         $data2 = array(
@@ -70,7 +71,8 @@ class student_model extends CI_Model{
      public function insert_student()
      {
         $data = array(
-            'worker_name' => $this->input->post('worker_name'),
+            'first_name' => $this->input->post('first_name'),
+            'last_name' => $this->input->post('last_name'),
             'worker_email' => $this->input->post('worker_email'),
             'worker_pass' => $this->input->post('worker_pass'),
             'role' => $this->input->post('role'));

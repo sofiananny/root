@@ -72,8 +72,14 @@ echo form_open_multipart('student/update_student', '', $hidden);
 	echo "<br/><br/>";
 
 
-	echo form_label('Name&nbsp', 'worker_name');
-	echo form_input('worker_name', $one_student['worker_name']);
+	echo form_label('First Name&nbsp', 'first_name');
+	echo form_input('first_name', $one_student['first_name']);
+	echo form_error('first_name', '<div class="error" style="color: red;">', '</div>');
+	echo "<br/><br/>";
+
+	echo form_label('Last Name&nbsp', 'last_name');
+	echo form_input('last_name', $one_student['last_name']);
+	echo form_error('last_name', '<div class="error" style="color: red;">', '</div>');
 	echo "<br/><br/>";
 
 

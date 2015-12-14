@@ -585,5 +585,43 @@ a, ul, li {
   cursor: pointer;
 }
 .caret{
-  color: green;
+  color: #2baf89;
 }
+input[type=checkbox].css-checkbox {
+              position:absolute;
+              z-index:-1000;
+              left:-1000px;
+              overflow: hidden;
+              clip: rect(0 0 0 0);
+              height:1px;
+              width:1px;
+              margin:-1px;
+              padding:0;
+              border:0;
+            }
+
+            input[type=checkbox].css-checkbox + label.css-label {
+              padding-left:46px;
+              height:41px; 
+              display:inline-block;
+              line-height:41px;
+              background-repeat:no-repeat;
+              background-position: 0 0;
+              font-size:41px;
+              vertical-align:middle;
+              cursor:pointer;
+
+            }
+
+            input[type=checkbox].css-checkbox:checked + label.css-label {
+              background-position: 0 -41px;
+            }
+            label.css-label {
+        background-image:url(../../assets/img/checkbox.png);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
