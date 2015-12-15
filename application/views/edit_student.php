@@ -29,7 +29,7 @@
         <ul class="navbar-brand visible-xs-block pull-right" style="margin-bottom: 0px; list-style-type: none; margin-left: -300px;">
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration: none; color: #777; color: red">
-              <?php echo $_SESSION['worker_name']; ?> <span class="caret"></span>
+              <?php echo $_SESSION['first_name']; ?> <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li><a href="<?php echo base_url(); ?>../../worker/login/logout_worker">Изход</a></li>
@@ -44,7 +44,7 @@
         <ul class="nav navbar-nav hidden-xs navbar-right">
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: red">
-              <b><?php echo $_SESSION['worker_name']; ?> <span class="caret"></span></b>
+              <b><?php echo $_SESSION['first_name']; ?> <span class="caret"></span></b>
             </a>
             <ul class="dropdown-menu">
               <li><a href="<?php echo base_url(); ?>../../worker/login/logout_worker">Изход</a></li>
@@ -74,12 +74,10 @@ echo form_open_multipart('student/update_student', '', $hidden);
 
 	echo form_label('First Name&nbsp', 'first_name');
 	echo form_input('first_name', $one_student['first_name']);
-	echo form_error('first_name', '<div class="error" style="color: red;">', '</div>');
 	echo "<br/><br/>";
 
 	echo form_label('Last Name&nbsp', 'last_name');
 	echo form_input('last_name', $one_student['last_name']);
-	echo form_error('last_name', '<div class="error" style="color: red;">', '</div>');
 	echo "<br/><br/>";
 
 

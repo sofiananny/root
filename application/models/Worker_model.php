@@ -34,7 +34,11 @@ class Worker_model extends CI_Model{
   }
   function get_all_nannies()
   {
-    $q = $this->db->get('workers');
+    $this->db->from('workers');
+    $this->db->join('worker_details', 'worker_details.student_id = workers.worker_id');
+    $this->db->where('role','worker');
+    $this->db->where('date_deleted', NULL);
+    $q = $this->db->get();
     return $q->result_array();
   }
 

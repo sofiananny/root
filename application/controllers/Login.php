@@ -38,8 +38,9 @@ TOP_R;
     unset($_SESSION['userid']);
     $response['success']=true;
     header('Content-Type: application/json');
-    echo json_encode($response);
     redirect('');
+    echo json_encode($response);
+    
   }
   function forgot_password(){
     $response['success']=false;

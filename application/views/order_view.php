@@ -166,7 +166,17 @@ $url=base_url().'assets/img';
           <div class="row">
             <div class="col-md-6" id="first-nanny">
               <div class="form-group">
-                    <?php
+              <?php foreach ($all_nanies_list as $value) {?>
+              <div class="wrapper">
+                <div class="avatar">
+                <?php echo "<img src='./uploads/$value[image]'  alt='avatar'>"?>
+                <div class="header"> 
+                  <span class="name"><?php echo $value['first_name'];?></span><br/>
+                 <!-- <span class="age"><?php echo $value['date_of_birth'];}?></span>-->
+                </div>
+                </div>
+              </div>
+                   <!--<?php
                       foreach ($all_nanies_list as $value) {
                         echo "<div class='col-sm-11'>
                           $value[first_name]  $value[last_name]
@@ -174,7 +184,7 @@ $url=base_url().'assets/img';
                          
                         </div><hr/>";
                       }
-                    ?>
+                    ?>-->
                 <span class="help-block pull-right">Изберете бавачка!</span>
               </div>
             </div>

@@ -30,7 +30,7 @@
         <ul class="navbar-brand visible-xs-block pull-right" style="margin-bottom: 0px; list-style-type: none; margin-left: -300px;">
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="text-decoration: none; color: #777; color: red">
-              <?php echo $_SESSION['worker_name']; ?> <span class="caret"></span>
+              <?php echo $_SESSION['first_name']; ?> <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li><a href="<?php echo base_url(); ?>../../worker/login/logout_worker">Изход</a></li>
@@ -45,7 +45,7 @@
         <ul class="nav navbar-nav hidden-xs navbar-right">
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: red">
-              <b><?php echo $_SESSION['worker_name']; ?> <span class="caret"></span></b>
+              <b><?php echo $_SESSION['first_name']; ?> <span class="caret"></span></b>
             </a>
             <ul class="dropdown-menu">
               <li><a href="<?php echo base_url(); ?>../../worker/login/logout_worker">Изход</a></li>

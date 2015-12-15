@@ -27,7 +27,7 @@ class student_model extends CI_Model{
         $data['one_student']= $this->load->student_model->get_one_student();
         $this->load->view('edit_student', $data);
      }
-    public function update_student()
+    public function update_student($file_name)
      {
         $id = $this->input->post('worker_id');
         $data = array(
@@ -45,6 +45,7 @@ class student_model extends CI_Model{
         'alergies' => $this->input->post('alergies'),
         'alergies_specific' => $this->input->post('alergies_specific'),
         'about' => $this->input->post('about'),
+        'prof_interest' => $this->input->post('prof_interest'),
         'interests1' => $this->input->post('interests1'),
         'interests2' => $this->input->post('interests2'),
         'interests3' => $this->input->post('interests3'),
@@ -60,15 +61,15 @@ class student_model extends CI_Model{
         'em_address' => $this->input->post('em_address'),
         'avg_score' => $this->input->post('avg_score'),
         'recommended_by' => $this->input->post('recommended_by'),
-        'recruitment_score' => $this->input->post('recruitment_score')
+        'recruitment_score' => $this->input->post('recruitment_score'),
+        'image' => $file_name
         );
         $this->db->where('worker_id', $id);
         $this->db->update('workers', $data);
         $this->db->where('student_id', $id);
-        $this->db->update('worker_details', $data2);
-          
+        $this->db->update('worker_details', $data2);       
      }
-     public function insert_student()
+     public function insert_student($file_name)
      {
         $data = array(
             'first_name' => $this->input->post('first_name'),
