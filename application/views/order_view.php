@@ -169,13 +169,21 @@ $url=base_url().'assets/img';
               <?php foreach ($all_nanies_list as $value) {?>
               <div class="wrapper">
                 <div class="avatar">
-                <?php echo "<img src='./uploads/$value[image]'  alt='avatar'>"?>
-                <div class="header"> 
-                  <span class="name"><?php echo $value['first_name'];?></span><br/>
-                 <!-- <span class="age"><?php echo $value['date_of_birth'];}?></span>-->
-                </div>
+                  <?php echo "<img src='./uploads/$value[image]'  alt='avatar'>";
+                    $from = new DateTime($value['date_of_birth']);
+                    $to   = new DateTime('today');
+                  ?>
+                  </div> 
+                <div class="name-header"> 
+                  <span class="name-age"><?php echo $value['first_name']. ",";?>
+                 <?php echo $from->diff($to)->y . " г.";}?></span>
+                 <br/>
+                 <span style="font-size: 24px;"> <?php echo $value['university'];?></span>
+                 <input type="checkbox" name="checkboxG1" class="css-checkbox">
+                 <label for"checkboxG1" class="css-label"></label>
                 </div>
               </div>
+              <hr/>
                    <!--<?php
                       foreach ($all_nanies_list as $value) {
                         echo "<div class='col-sm-11'>
@@ -189,9 +197,9 @@ $url=base_url().'assets/img';
               </div>
             </div>
 
-            <div class="col-md-6" id="second-nanny">
+      <div class="col-md-6" id="second-nanny">
               <div class="form-group">
-                    <?php
+                   <<?php
                       foreach ($all_nanies_list as $value) {
                         echo "<div class='col-sm-11'>
                           $value[first_name]  $value[last_name]
@@ -200,7 +208,7 @@ $url=base_url().'assets/img';
                         </div><hr/>";
                       }
                     ?>
-                <span class="help-block pull-right">Изберете бавачка!</span>
+                <span class="help-block pull-right">Изберете бавачка!</span>?>
               </div>
             </div>
             <div class="col-md-12" id="kids_data">
