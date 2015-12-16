@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2015 at 02:10 PM
+-- Generation Time: Dec 16, 2015 at 01:14 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -186,20 +186,21 @@ CREATE TABLE IF NOT EXISTS `schedules` (
   `worker_id` int(11) NOT NULL,
   `schedule_date` date NOT NULL,
   `begin_hour` time NOT NULL,
-  `end_hour` time NOT NULL
+  `end_hour` time NOT NULL,
+  `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `schedules`
 --
 
-INSERT INTO `schedules` (`worker_id`, `schedule_date`, `begin_hour`, `end_hour`) VALUES
-(1, '2015-09-30', '15:00:00', '19:00:00'),
-(1, '2015-10-02', '20:00:00', '24:00:00'),
-(1, '2015-10-14', '15:00:00', '20:00:00'),
-(1, '2015-11-09', '08:00:00', '12:30:00'),
-(1, '2015-11-10', '11:00:00', '15:00:00'),
-(1, '2015-11-30', '00:00:00', '07:30:00');
+INSERT INTO `schedules` (`worker_id`, `schedule_date`, `begin_hour`, `end_hour`, `address`) VALUES
+(1, '2015-09-30', '15:00:00', '19:00:00', ''),
+(1, '2015-10-02', '20:00:00', '24:00:00', ''),
+(1, '2015-10-14', '15:00:00', '20:00:00', ''),
+(1, '2015-11-09', '08:00:00', '12:30:00', ''),
+(1, '2015-11-10', '11:00:00', '15:00:00', ''),
+(1, '2015-11-30', '00:00:00', '07:30:00', '');
 
 -- --------------------------------------------------------
 
@@ -225,7 +226,7 @@ INSERT INTO `users` (`userid`, `username`, `phone`, `email`, `password`, `insert
 (2, 'Емил Петров', '0886066166', 'elp_vr1@yahoo.com', '81dc9bdb52d04dc20036dbd8313ed055', '2015-09-05'),
 (3, 'Друг Потребител', '0886066168', 'elp_vr2@yahoo.com', '81dc9bdb52d04dc20036dbd8313ed055', '2015-10-27'),
 (4, 'jklxdnxdfl', '000000000000000000', 'elp_vr3@yahoo.com', '81dc9bdb52d04dc20036dbd8313ed055', '2015-10-27'),
-(5, 'Mihail Ivanchevlkjniuhkjnlmmlkhybujnkm', '0883469000', 'mivanchev@gmail.com', 'ff8b33735675d5146b6e5b3d9affc22c', '2015-10-27'),
+(5, 'Mihail Ivanchev', '0883469000', 'mivanchev@gmail.com', 'ff8b33735675d5146b6e5b3d9affc22c', '2015-10-27'),
 (6, 'Магдалена', '+359889454649', 'stefanova.magdalena@gmail.com', 'c02f76ef705de6ee26426c2cd0b75a48', '2015-11-01'),
 (7, 'Биляна Димитрова', '0884257076', 'dimitrova.bibi@gmail.com', 'ba8f717ac99b40998a2cf3bddb6bbaed', '2015-11-03'),
 (8, 'Марина Стоянова', '0889884957', 'marina.stoyanova09@gmail.com', '0862316b6ade92133ea660e14d27aaaa', '2015-11-04');
@@ -238,7 +239,8 @@ INSERT INTO `users` (`userid`, `username`, `phone`, `email`, `password`, `insert
 
 CREATE TABLE IF NOT EXISTS `workers` (
   `worker_id` int(11) NOT NULL,
-  `worker_name` varchar(50) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
   `worker_email` varchar(50) NOT NULL,
   `role` varchar(10) NOT NULL,
   `worker_pass` varchar(32) NOT NULL,
@@ -249,11 +251,11 @@ CREATE TABLE IF NOT EXISTS `workers` (
 -- Dumping data for table `workers`
 --
 
-INSERT INTO `workers` (`worker_id`, `worker_name`, `worker_email`, `role`, `worker_pass`, `date_deleted`) VALUES
-(1, 'Иванка Иванова', 'mail@mail.com', 'worker', '81dc9bdb52d04dc20036dbd8313ed055', NULL),
-(2, 'Михаил Иванчев', 'mivanchev@gmail.com', 'admin', 'ff8b33735675d5146b6e5b3d9affc22c', NULL),
-(3, '', 'm@mail.com', 'worker', '81dc9bdb52d04dc20036dbd8313ed055', NULL),
-(4, 'Михаил Иванчев', 'm@m.com', 'worker', '1234', '2015-11-30');
+INSERT INTO `workers` (`worker_id`, `first_name`, `last_name`, `worker_email`, `role`, `worker_pass`, `date_deleted`) VALUES
+(1, 'Иванка', 'Иванова', 'mail@mail.com', 'worker', '81dc9bdb52d04dc20036dbd8313ed055', NULL),
+(2, 'Михаил', 'Иванчев', 'mivanchev@gmail.com', 'admin', 'ff8b33735675d5146b6e5b3d9affc22c', NULL),
+(3, 'fgjhj', 'adgfve', 'm@mail.com', 'worker', '81dc9bdb52d04dc20036dbd8313ed055', NULL),
+(4, 'Михаил4', 'Иванчев', 'm@m.com', 'worker', '1234', '2015-11-30');
 
 -- --------------------------------------------------------
 
@@ -263,7 +265,7 @@ INSERT INTO `workers` (`worker_id`, `worker_name`, `worker_email`, `role`, `work
 
 CREATE TABLE IF NOT EXISTS `worker_details` (
   `student_id` int(11) NOT NULL,
-  `phone` int(11) NOT NULL,
+  `phone` varchar(13) NOT NULL,
   `date_of_birth` date NOT NULL,
   `sex` varchar(10) NOT NULL,
   `university` varchar(30) NOT NULL,
@@ -289,18 +291,18 @@ CREATE TABLE IF NOT EXISTS `worker_details` (
   `avg_score` int(11) NOT NULL,
   `recommended_by` varchar(50) NOT NULL,
   `recruitment_score` int(11) NOT NULL,
-  `image` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `image` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `worker_details`
 --
 
 INSERT INTO `worker_details` (`student_id`, `phone`, `date_of_birth`, `sex`, `university`, `speciality`, `prof_interest`, `smoker`, `alergies`, `alergies_specific`, `about`, `interests1`, `interests2`, `interests3`, `interests4`, `idcard_address`, `current_address`, `address1`, `address2`, `em_contact_name`, `em_telephone`, `em_email`, `em_connection`, `em_address`, `avg_score`, `recommended_by`, `recruitment_score`, `image`) VALUES
-(1, 123, '2015-11-11', 'female', 'some', 'some', 'sdfa', 'no', 'no', 'no', 'no', '1', '1', '1', '1', 'asdfasdf', '1234', 'asdfasdf', 'asdfasdf', 'asdfasdf', 5614564, 'asdfasdf', 'sadfasdf', 'asdfasdf', 1, 'asdfasdf', 1, ''),
-(2, 56654, '2015-11-01', 'male', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'yes', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'ffgdg', 'dfgdfg', 'sdfgsdfg', '1234', 'sdfgsdfg', 'dfsdgfsdgf', 'sdfgsdfg', 667987, 'dfsdfg', 'dfgsdfg', 'asDFGAERG', 5, 'dsfgsdfggf', 5, ''),
-(3, 1234, '2015-11-19', 'male', 'asdfasdf', ' asdfasdf', '', 'yes', 'asdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'sdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 251564, 'asdfasdf', 'asdfasdf', 'asdfasdf', 2, 'asdfasdf', 2, ''),
-(4, 12314, '2015-11-11', 'male', 'asdfsadf', 'qwerqwer', '', 'no', 'qwerqwer', 'qwerqwer', 'qwerqwerqwer', 'qwerqwer', 'qwerqwer', '', 'qwerqwer', 'qwerqwer', 'qwerqwerqwer', 'qwetqwet', 'qwerqwer', 'qwetqwetrq', 3254864, 'qwerqwer', 'qwetqweqwer', 'asdfawer', 1, 'asdfadf', 1, '');
+(1, '123', '2012-11-11', 'female', 'yale', 'some', 'sdfa', 'no', 'no', 'no', 'no', '1', '1', '1', '1', 'asdfasdf', '1234', 'asdfasdf', 'asdfasdf', 'asdfasdf', 5614564, 'asdfasdf', 'sadfasdf', 'asdfasdf', 1, 'asdfasdf', 1, 'wef23.jpg'),
+(2, '56654', '2015-11-01', 'male', 'cambridge', 'asdfasdf', 'asdfasdf', 'yes', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'ffgdg', 'dfgdfg', 'sdfgsdfg', '1234', 'sdfgsdfg', 'dfsdgfsdgf', 'sdfgsdfg', 667987, 'dfsdfg', 'dfgsdfg', 'asDFGAERG', 5, 'dsfgsdfggf', 5, ''),
+(3, '1234', '2015-11-19', 'male', 'harvard', ' asdfasdf', 'jhbnkm', 'yes', 'asdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'sdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', 251564, 'asdfasdf', 'asdfasdf', 'asdfasdf', 2, 'asdfasdf', 2, 'wef21.jpg'),
+(4, '12314', '2010-11-11', 'male', 'sofiisky', 'qwerqwer', '', 'no', 'qwerqwer', 'qwerqwer', 'qwerqwerqwer', 'qwerqwer', 'qwerqwer', '', 'qwerqwer', 'qwerqwer', 'qwerqwerqwer', 'qwetqwet', 'qwerqwer', 'qwetqwetrq', 3254864, 'qwerqwer', 'qwetqweqwer', 'asdfawer', 1, 'asdfadf', 1, '');
 
 --
 -- Indexes for dumped tables
@@ -359,7 +361,7 @@ ALTER TABLE `workers`
 -- AUTO_INCREMENT for table `worker_details`
 --
 ALTER TABLE `worker_details`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- Constraints for dumped tables
 --
