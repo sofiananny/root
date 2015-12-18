@@ -12,21 +12,15 @@ class student_model extends CI_Model{
         $q = $this->db->get();
           return $q->result_array();
      }
-    public function get_one_student()
+    public function get_one_student($id)
      {
 		$this->db->from('workers');
 		$this->db->join('worker_details', 'worker_details.student_id = workers.worker_id');
-		$this->db->where('worker_id', $_GET['id']);
+		$this->db->where('worker_id', $id);
         $q = $this->db->get();
           return $q->row_array();
      }
-     public function edit_student()
-     {
-        $this->load->helper('form');
-        $this->load->model('student_model');
-        $data['one_student']= $this->load->student_model->get_one_student();
-        $this->load->view('edit_student', $data);
-     }
+
     public function update_student($file_name)
      {
         $id = $this->input->post('worker_id');
@@ -67,7 +61,8 @@ class student_model extends CI_Model{
         $this->db->where('worker_id', $id);
         $this->db->update('workers', $data);
         $this->db->where('student_id', $id);
-        $this->db->update('worker_details', $data2);       
+        $this->db->update('worker_details', $data2);
+
      }
      public function insert_student($file_name)
      {
@@ -102,7 +97,8 @@ class student_model extends CI_Model{
             'em_address' => $this->input->post('em_address'),
             'avg_score' => $this->input->post('avg_score'),
             'recommended_by' => $this->input->post('recommended_by'),
-            'recruitment_score' => $this->input->post('recruitment_score')
+            'recruitment_score' => $this->input->post('recruitment_score'),
+            'image' => $file_name
         );
         $this->db->insert('workers', $data);
         $this->db->insert('worker_details', $data2);
