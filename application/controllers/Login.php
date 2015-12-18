@@ -16,7 +16,7 @@ class Login extends CI_Controller {
           $response['top_r']=<<<TOP_R
           <a id='to_order' class='btn btn-order fw' onclick="window.location.href='order'">поръчай</a>
  <div class='dropdown pull-left'>
-  <a class='dropdown-toggle' type='button' data-toggle='dropdown'><span class='glyphicon glyphicon-user to_account_g'></span>$_SESSION[username]
+  <a class='dropdown-toggle' type='button' data-toggle='dropdown'><span class='glyphicon glyphicon-user to_account_g'></span><span id='usr_names'>$_SESSION[username]</span>
   <span class='caret'></span></a>
   <ul id='profile' class='dropdown-menu'>
     <li><a href='account'><span id='usr_names'>профил</span></a></li>
@@ -40,7 +40,7 @@ TOP_R;
     header('Content-Type: application/json');
     redirect('');
     echo json_encode($response);
-    
+
   }
   function forgot_password(){
     $response['success']=false;
@@ -48,7 +48,7 @@ TOP_R;
     $this->load->model('users_model');
     $response['msg']='Невалиден email.';
     if (filter_var($this->input->post('email'),FILTER_VALIDATE_EMAIL)) {
-      if ($this->users_model->isExsistEmail()) { 
+      if ($this->users_model->isExsistEmail()) {
         $this->users_model->generatePassword();
         $response['success']=true;
       }

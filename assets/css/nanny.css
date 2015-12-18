@@ -9,16 +9,16 @@
   src: url('../fonts/rage.ttf');
 }
 
-@media (min-width: 200px) {
+@media (max-width: 400px) {
   .white-container {
     width: 100%;
   }
   .logo {
     width: 140px;
-    margin-top: -20px;
+    margin-top: -30px;
   }
   #welcome-div h1 {
-    height: 60px;
+    height: 80px;
   }
   #welcome-div h3 {
     font-size: 24px;
@@ -29,6 +29,11 @@
   }
   .fw {
     margin-top: 40px;
+  }
+  .dropdown {
+    position: absolute;
+    top: 16px;
+    right: 150px;
   }
 }
 

@@ -8,14 +8,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     }
      public function index()
      {
-          $this->load->model('student_model'); 
+          $this->load->model('student_model');
           $data['all_students'] = $this->student_model->get_student_list();
           $this->load->view('admin_panel', $data);
      }
      public function view_student()
      {
         $this->load->helper('file');
-     	$this->load->model('student_model'); 
+     	$this->load->model('student_model');
         $data['one_student'] = $this->student_model->get_one_student();
         $this->load->view('view_student', $data);
      }
@@ -23,12 +23,12 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
      {
         $this->load->helper('file');
         $this->load->helper('form');
-     	$this->load->model('student_model'); 
+     	$this->load->model('student_model');
         $data['one_student'] = $this->student_model->get_one_student();
         $this->load->view('edit_student', $data);
      }
      public function update_student()
-     {  
+     {
         $this->load->helper('file');
         $this->load->helper('form');
         /*$this->load->library('form_validation');
@@ -59,9 +59,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                     $this->student_model->update_student();
                     $this->do_upload();
                     $this->output->enable_profiler(TRUE);
-                    //redirect('student'); 
+                    //redirect('student');
                /* }*/
-       
+
      }
     public function add_student()
     {
@@ -99,11 +99,11 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 else
                 {
                     $this->load->model('student_model');
-                    $this->student_model->insert_student(); 
+                    $this->student_model->insert_student();
                 }
     }
     public function delete_student()
-    {  
+    {
         $this->load->model('student_model');
         $this->student_model->delete_student();
         redirect('student');
