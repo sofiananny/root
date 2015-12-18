@@ -59,7 +59,7 @@ class Order_model extends CI_Model {
 
   function get_all_unapproved_by_nanny($nanny_id)
   {
-    $q = "SELECT orders.*, districts.*, w.first_name as worker1, w2.first_name as worker2 FROM `orders` 
+    $q = "SELECT orders.*, districts.*, w.worker_name as worker1, w2.worker_name as worker2 FROM `orders` 
           JOIN  districts ON orders.district_id = districts.dist_id
           JOIN workers as w ON orders.nanny_id1 = w.worker_id
           LEFT JOIN workers as w2 ON orders.nanny_id2 = w2.worker_id
@@ -91,7 +91,7 @@ class Order_model extends CI_Model {
 
   function get_all_approved_by_nanny($nanny_id)
   {
-    $q = "SELECT orders.*, districts.*, w.first_name as worker1, w2.first_name as worker2 FROM `orders` 
+    $q = "SELECT orders.*, districts.*, w.worker_name as worker1, w2.worker_name as worker2 FROM `orders` 
           JOIN  districts ON orders.district_id = districts.dist_id
           JOIN workers as w ON orders.nanny_id1 = w.worker_id
           LEFT JOIN workers as w2 ON orders.nanny_id2 = w2.worker_id

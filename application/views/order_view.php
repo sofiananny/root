@@ -188,7 +188,7 @@ $url=base_url().'assets/img';
                       <br/>
                       <div class="img-icons"><img src="././assets/img/povtarqemost.png" width="40px" height="40px">&nbsp&nbsp&nbsp<img src="././assets/img/health.png" width="40px" height="40px">&nbsp&nbsp&nbsp<img src="././assets/img/connect.png" width="40px" height="40px"></div>
                       <div>
-                        <?php echo "<input type='checkbox' id=$value[student_id] name='nanny_id1' class='css-checkbox' value='$value[worker_id]'>
+                        <?php echo "<input type='checkbox' id=$value[student_id] class='css-checkbox'>
                         <label for=$value[student_id] class='css-label'>Избери</label>";?>
                       </div>
                     </div>
@@ -228,7 +228,7 @@ $url=base_url().'assets/img';
 
             </div>-->
     </div>
-    </div>
+    <!--</div>-->
     <div id="step4" class="step">
       <div class="row">
         <div class="col-md-6">

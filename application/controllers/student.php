@@ -16,22 +16,22 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
      {
         $this->load->helper('file');
      	$this->load->model('student_model');
-        $data['one_student'] = $this->student_model->get_one_student($_GET['id']);
+        $data['one_student'] = $this->student_model->get_one_student();
         $this->load->view('view_student', $data);
      }
-     public function edit_student($id)
+     public function edit_student()
      {
         $this->load->helper('file');
         $this->load->helper('form');
      	$this->load->model('student_model');
-        $data['one_student'] = $this->student_model->get_one_student($id);
+        $data['one_student'] = $this->student_model->get_one_student();
         $this->load->view('edit_student', $data);
      }
      public function update_student()
      {
         $this->load->helper('file');
         $this->load->helper('form');
-        $this->load->library('form_validation');
+        /*$this->load->library('form_validation');
         $this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
         $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
         $this->form_validation->set_rules('worker_email', 'E-Mail', 'trim|required');
@@ -51,16 +51,16 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         $this->form_validation->set_rules('address2', 'Address for pickup 2', 'required');
         if ($this->form_validation->run() == FALSE)
                 {
-                        $this->edit_student($this->input->post('student_id'));
+                        $this->load->view('edit_student');
                 }
                 else
-                {
+                {*/
                     $this->load->model('student_model');
-                    $file_name = $this->do_upload();
-                    $this->student_model->update_student($file_name);                    
+                    $this->student_model->update_student();
+                    $this->do_upload();
                     $this->output->enable_profiler(TRUE);
-                    redirect('student');
-                }
+                    //redirect('student');
+               /* }*/
 
      }
     public function add_student()
@@ -99,9 +99,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 else
                 {
                     $this->load->model('student_model');
-                    $file_name = $this->do_upload();
-                    print_r($file_name);
-                    $this->student_model->insert_student($file_name);
+                    $this->student_model->insert_student();
                 }
     }
     public function delete_student()
@@ -123,7 +121,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                 if ( ! $this->upload->do_upload('upload'))
                 {
                         $error = array('error' => $this->upload->display_errors());
-                        return $error;
+                        print_r($error);
                         //$this->load->view('edit_student', $error);
                 }
                 else
@@ -131,10 +129,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
                         $data = array('upload_data' => $this->upload->data());
                         $upload_data = $this->upload->data();
                         $file_name = $upload_data['file_name'];
-                        return $file_name;
-                        //$this->load->model('student_model');
-                        //$this->student_model->update_student($file_name);
-                        //$this->student_model->insert_student($file_name);
+                        $this->load->model('student_model');
+                        $this->student_model->update_student($file_name);
+                        $this->student_model->insert_student($file_name);
                 }
         }
 }

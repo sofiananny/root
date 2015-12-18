@@ -26,7 +26,7 @@ class Requests extends CI_Controller {
   	//TODO - redirect does NOT work
   	$this->load->model('order_model');
   	$this->order_model->approve_order();
-  	redirect('');
+  	redirect('worker/requests');
   }
 
   function parent_approve()
